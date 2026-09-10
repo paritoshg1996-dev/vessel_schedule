@@ -1,0 +1,66 @@
+name: Scrape JNPT vessel schedule
+
+on:
+  schedule:
+    # Every 3 hours. JNPT publishes daily, but terminals sometimes update
+    # mid-day and this is also how often the staleness/failure alerts get
+    # a chance to fire and clear. Tune to taste.
+    - cron: '0 */3 * * *'
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write   # needed to commit the refreshed data.json back to the repo
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # --- Database ---------------------------------------------------
+      # Recommended: point DATABASE_URL (repo secret) at a small hosted
+      # Postgres instance (Supabase, Neon, and Railway all have free
+      # tiers big enough for this). That gives you a DB that persists
+      # across runs on GitHub's ephemeral runners, and is a one-line
+      # change since models.py/run_pipeline.py already speak SQLAlchemy.
+      #
+      # If DATABASE_URL isn't set, the pipeline falls back to a fresh
+      # local SQLite file every run. That's fine for "what's the
+      # schedule right now" (frontend/data.json still comes out correct
+      # each run) but you lose first_seen_at history and cross-run
+      # dedup, since nothing persists between runs. Uncomment the cache
+      # step below if you want SQLite to persist without standing up
+      # Postgres.
+      #
+      # - name: Restore SQLite cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: vessel_schedule.db
+      #     key: vessel-schedule-db-${{ github.run_id }}
+      #     restore-keys: vessel-schedule-db-
+
+      - name: Run pipeline
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          ADMIN_ALERT_SLACK_WEBHOOK_URL: ${{ secrets.ADMIN_ALERT_SLACK_WEBHOOK_URL }}
+          ADMIN_ALERT_EMAIL_TO: ${{ secrets.ADMIN_ALERT_EMAIL_TO }}
+          ADMIN_ALERT_SMTP_HOST: ${{ secrets.ADMIN_ALERT_SMTP_HOST }}
+          ADMIN_ALERT_SMTP_PORT: ${{ secrets.ADMIN_ALERT_SMTP_PORT }}
+          ADMIN_ALERT_SMTP_USER: ${{ secrets.ADMIN_ALERT_SMTP_USER }}
+          ADMIN_ALERT_SMTP_PASSWORD: ${{ secrets.ADMIN_ALERT_SMTP_PASSWORD }}
+        run: python run_pipeline.py
+
+      - name: Commit refreshed data.json
+        run: |
+          git config user.name "vessel-schedule-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add frontend/data.json
+          git diff --cached --quiet || git commit -m "Refresh vessel schedule data [skip ci]"
+          git push

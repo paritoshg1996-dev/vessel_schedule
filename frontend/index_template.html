@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JNPT Vessel Schedule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1B24; --ink-2:#152A36; --ink-3:#1E3A47;
+    --fog:#E7ECEA; --fog-2:#D7DEDA; --fog-3:#C9D2CD;
+    --steel:#3D4F58; --steel-2:#6B7C84;
+    --amber:#E2921A; --amber-bg:#FBF0DC;
+    --green:#1E7A5F; --green-bg:#E2EFE9;
+    --red:#B33F32; --red-bg:#F6E4E1;
+    --ink-text:#14232B;
+    --white:#FBFBF9;
+    --font-display:'Big Shoulders Display',sans-serif;
+    --font-sans:'IBM Plex Sans',-apple-system,Segoe UI,sans-serif;
+    --font-mono:'IBM Plex Mono',SFMono-Regular,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--fog); color:var(--ink-text);
+    font-family:var(--font-sans); font-size:15px; line-height:1.5;
+  }
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--ink); color:var(--white);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 22px; gap:16px; flex-wrap:wrap;
+    border-bottom:1px solid var(--ink-3);
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand svg{display:block;}
+  .brand-text{font-family:var(--font-display); font-weight:700; font-size:1.5rem; letter-spacing:.2px;}
+  .brand-text b{font-weight:800;}
+  .brand-sub{font-family:var(--font-sans); font-size:.78rem; color:#9FB2BA; margin-top:1px;}
+  .header-right{display:flex; align-items:center; gap:18px; font-size:.82rem; color:#B9C7CC;}
+  .clock{font-family:var(--font-mono); color:var(--white); font-size:.85rem;}
+  .refresh-btn{
+    background:var(--ink-3); color:var(--white); border:1px solid #2C4956;
+    padding:7px 13px; border-radius:6px; font-family:var(--font-sans); font-size:.82rem;
+    font-weight:500; cursor:pointer;
+  }
+  .refresh-btn:hover{background:#254656;}
+
+  /* ---------- status strip ---------- */
+  .status-strip{
+    background:var(--ink-2); padding:10px 22px; display:flex; align-items:center;
+    gap:8px; flex-wrap:wrap; border-bottom:1px solid var(--ink-3);
+  }
+  .status-strip .as-of{margin-left:auto; font-size:.78rem; color:#9FB2BA; font-family:var(--font-sans);}
+  .chip{
+    display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08); color:var(--white); padding:6px 12px 6px 10px;
+    border-radius:999px; font-size:.8rem; cursor:pointer; font-family:var(--font-sans); font-weight:500;
+  }
+  .chip:hover{background:rgba(255,255,255,.09);}
+  .chip.active{border-color:var(--amber); background:rgba(226,146,26,.14);}
+  .chip .dot{width:8px; height:8px; border-radius:50%; flex:none;}
+  .dot-green{background:var(--green); box-shadow:0 0 0 3px rgba(30,122,95,.25);}
+  .dot-amber{background:var(--amber); box-shadow:0 0 0 3px rgba(226,146,26,.25);}
+  .dot-red{background:var(--red); box-shadow:0 0 0 3px rgba(179,63,50,.25);}
+  .dot-grey{background:#5A6B72;}
+
+  /* ---------- layout ---------- */
+  main{max-width:1180px; margin:0 auto; padding:26px 22px 60px;}
+
+  .stats{display:flex; gap:0; margin-bottom:30px; border-top:1px solid var(--fog-3); flex-wrap:wrap;}
+  .stat{flex:1 1 160px; padding:18px 22px 4px 0; border-bottom:1px solid var(--fog-3);}
+  .stat + .stat{border-left:1px solid var(--fog-3); padding-left:22px;}
+  .stat-value{font-family:var(--font-display); font-weight:700; font-size:2.6rem; line-height:1; color:var(--ink);}
+  .stat-label{font-size:.82rem; color:var(--steel); margin-top:6px;}
+
+  .banner{
+    display:flex; gap:10px; align-items:flex-start; padding:12px 16px; border-radius:8px;
+    background:var(--red-bg); border:1px solid #E3B8B0; color:#7A2C22; font-size:.86rem; margin-bottom:22px;
+  }
+  .banner b{font-weight:600;}
+  .banner.warn{background:var(--amber-bg); border-color:#EBCB93; color:#805417;}
+
+  .controls{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:14px;}
+  .search{
+    flex:1 1 240px; border:none; border-bottom:2px solid var(--fog-3); background:transparent;
+    padding:9px 2px; font-family:var(--font-sans); font-size:.92rem; color:var(--ink-text);
+  }
+  .search:focus{border-bottom-color:var(--ink);}
+  .search::placeholder{color:var(--steel-2);}
+  .tabs{display:flex; gap:2px; border-bottom:1px solid var(--fog-3);}
+  .tab{
+    padding:9px 14px; font-size:.86rem; font-weight:500; color:var(--steel); background:none;
+    border:none; border-bottom:2px solid transparent; cursor:pointer; font-family:var(--font-sans);
+    margin-bottom:-1px;
+  }
+  .tab.active{color:var(--ink); border-bottom-color:var(--ink);}
+  .tab .count{color:var(--steel-2); font-weight:400;}
+
+  .table-scroll{overflow-x:auto; border-top:1px solid var(--ink);}
+  table{width:100%; border-collapse:collapse; min-width:760px;}
+  thead th{
+    text-align:left; font-size:.76rem; font-weight:600; color:var(--steel);
+    padding:10px 14px; border-bottom:1px solid var(--fog-3); white-space:nowrap;
+  }
+  tbody td{padding:12px 14px; border-bottom:1px solid var(--fog-2); font-size:.88rem; vertical-align:top;}
+  tbody tr:hover{background:rgba(20,35,43,.03);}
+  tbody tr.sample-row{background:var(--amber-bg);}
+  tbody tr.sample-row:hover{background:#F7E9CC;}
+  .vessel-name{font-weight:600; color:var(--ink-text);}
+  .code{font-family:var(--font-mono); font-size:.84rem; color:var(--steel);}
+  .muted{color:var(--steel-2);}
+  .sample-tag{
+    display:inline-block; font-size:.68rem; font-weight:600; color:#805417; background:#F3DBA6;
+    padding:1px 7px; border-radius:4px; margin-left:7px; vertical-align:1px;
+  }
+  .status-pill{
+    display:inline-block; font-size:.76rem; padding:2px 9px; border-radius:999px; font-weight:500;
+  }
+  .status-berthed{background:var(--green-bg); color:var(--green);}
+  .status-expected{background:#E4E9F4; color:#39508C;}
+  .status-sailed{background:var(--fog-2); color:var(--steel);}
+
+  .empty-state{padding:50px 20px; text-align:left; border-top:1px solid var(--fog-3);}
+  .empty-state h3{font-family:var(--font-sans); font-size:1.05rem; margin:0 0 6px;}
+  .empty-state p{color:var(--steel); font-size:.88rem; max-width:480px; margin:0;}
+
+  footer{max-width:1180px; margin:0 auto; padding:0 22px 50px; color:var(--steel); font-size:.82rem;}
+  footer details{border-top:1px solid var(--fog-3); padding:16px 0;}
+  footer summary{cursor:pointer; font-weight:500; color:var(--ink-text);}
+  footer .source-list{margin:14px 0 0; padding:0; list-style:none;}
+  footer .source-list li{display:flex; gap:10px; padding:5px 0; align-items:baseline;}
+  footer .source-list .dot{width:7px; height:7px; border-radius:50%; flex:none; margin-top:5px;}
+  footer a{text-decoration:underline; text-decoration-color:var(--fog-3);}
+
+  @media (max-width:640px){
+    .stat-value{font-size:2.1rem;}
+    th.hide-mobile, td.hide-mobile{display:none;}
+    header{padding:12px 16px;}
+    .status-strip{padding:9px 16px;}
+    main{padding:20px 16px 40px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <path d="M3 23 L3 6 L15 3 L15 23 Z" fill="#E2921A"/>
+      <path d="M15 3 L15 23 L23 23 L23 9 Z" fill="#F1EFE6"/>
+      <rect x="1" y="23" width="24" height="2" fill="#6B7C84"/>
+    </svg>
+    <div>
+      <div class="brand-text"><b>JNPT</b> Vessel Schedule</div>
+      <div class="brand-sub">Container berthing &amp; expected-arrival tracker</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <span id="clock" class="clock">--:--:-- IST</span>
+    <button class="refresh-btn" id="refreshBtn" type="button">Refresh</button>
+  </div>
+</header>
+
+<div class="status-strip" id="statusStrip" role="tablist" aria-label="Data source status">
+  <!-- chips injected by JS -->
+  <span class="as-of" id="asOf"></span>
+</div>
+
+<main>
+
+  <div id="freshnessBanner"></div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="controls">
+    <input class="search" id="searchInput" type="text" placeholder="Search vessel, voyage or line…" aria-label="Search vessels">
+    <div class="tabs" id="statusTabs" role="tablist" aria-label="Vessel status">
+      <button class="tab" role="tab" data-status="all">All</button>
+      <button class="tab" role="tab" data-status="berthed">On berth</button>
+      <button class="tab" role="tab" data-status="expected">Expected</button>
+      <button class="tab" role="tab" data-status="sailed">Sailed</button>
+    </div>
+  </div>
+
+  <div class="table-scroll">
+    <table id="vesselTable">
+      <thead>
+        <tr>
+          <th>Vessel</th>
+          <th>Voyage</th>
+          <th>Service</th>
+          <th>Line</th>
+          <th class="hide-mobile">Agent</th>
+          <th>Terminal</th>
+          <th class="hide-mobile">Berth</th>
+          <th>Status</th>
+          <th>When</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <div class="empty-state" id="emptyState" hidden>
+    <h3></h3>
+    <p></p>
+  </div>
+
+</main>
+
+<footer>
+  <details>
+    <summary>Data sources &amp; how this works</summary>
+    <p style="margin-top:12px;">
+      Vessels currently on berth and expected-arrival data (voyage, service, line,
+      ETA, gate cut-off) are both pulled directly from each of the 5 container
+      terminals' own PDF reports. JNPA's port-wide daily berthing report is used
+      separately to discover each terminal's current report link and to confirm
+      today's data has actually been published.
+    </p>
+    <ul class="source-list" id="sourceList"></ul>
+    <p style="margin-top:14px;">
+      Rows marked <span class="sample-tag">SAMPLE</span> are placeholder data for
+      terminals whose automated feed isn't connected yet — they illustrate the
+      expected-vessel view and are never real operational data.
+    </p>
+  </details>
+</footer>
+
+<script>
+const EMBEDDED_DATA = __EMBEDDED_DATA__;
+
+const TERMINAL_ORDER = ["JNPT_MASTER","NSFT","NSICT","NSIGT","APMT","BMCT"];
+const TERMINAL_LABELS = {
+  JNPT_MASTER:"Master report", NSFT:"NSFT", NSICT:"NSICT", NSIGT:"NSIGT", APMT:"APMT", BMCT:"BMCT"
+};
+
+let DATA = null;
+let activeTerminal = null;
+let activeStatus = "all";
+let searchText = "";
+
+async function loadData(){
+  try{
+    const resp = await fetch("./data.json", {cache:"no-store"});
+    if(!resp.ok) throw new Error("no data.json");
+    DATA = await resp.json();
+  }catch(e){
+    DATA = EMBEDDED_DATA;
+  }
+  render();
+}
+
+function todayIST(){
+  return new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Kolkata"}).format(new Date());
+}
+
+function fmtDateTime(d){
+  const dt = new Date(d);
+  const datePart = dt.toLocaleDateString("en-GB", {day:"2-digit", month:"short", timeZone:"Asia/Kolkata"});
+  const timePart = dt.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit", timeZone:"Asia/Kolkata"});
+  return `${datePart}, ${timePart}`;
+}
+
+function fmtWhen(v){
+  if(v.status === "berthed"){
+    const d = v._alongside_at || v.expected_completion || v.berthed_on;
+    return d ? `Alongside ${fmtDateTime(d)}` : "—";
+  }
+  if(v.status === "sailed"){
+    return v.sailed_on ? fmtDateTime(v.sailed_on) : "—";
+  }
+  // expected
+  if(!v.eta) return "—";
+  let out = `ETA ${fmtDateTime(v.eta)}`;
+  if(v.gate_cutoff){
+    out += `<br><span class="muted" style="font-size:.82em">Gate cut-off ${fmtDateTime(v.gate_cutoff)}</span>`;
+  }
+  return out;
+}
+
+// berthed_vessels has its own richer shape (berth side, ops timestamps,
+// moves) scraped straight from each terminal's own PDF -- normalize it
+// into the same row shape the table/tabs/search/stats already expect,
+// tagged _alongside_at/_source so fmtWhen() and the table can tell where
+// a row came from without a parallel set of render functions.
+function berthedVesselToRow(b){
+  return {
+    vessel_name: b.vessel_name, via_no: b.via_no, service: b.service,
+    shipping_line: b.shipping_line, agent: null, terminal_code: b.terminal_code,
+    terminal_name: b.terminal_name, berth_no: b.berth_no, status: "berthed",
+    is_sample: false, _alongside_at: b.alongside_at, _source: "berthed_vessels",
+  };
+}
+
+function allRows(){
+  return (DATA.vessels || []).concat((DATA.berthed_vessels || []).map(berthedVesselToRow));
+}
+
+function statusOf(run){
+  if(!run) return {cls:"grey", label:"Unknown"};
+  if(run.status === "failed") return {cls:"red", label:"Not reachable"};
+  if(run.status !== "success") return {cls:"grey", label:run.status};
+  if(!run.report_date) return {cls:"amber", label:"Date unknown"};
+  if(run.report_date === todayIST()) return {cls:"green", label:"Fresh · today"};
+  return {cls:"amber", label:"Stale"};
+}
+
+function renderStatusStrip(){
+  const strip = document.getElementById("statusStrip");
+  const asOf = document.getElementById("asOf");
+  strip.querySelectorAll(".chip").forEach(c => c.remove());
+
+  const byCode = {};
+  (DATA.run_status || []).forEach(r => byCode[r.terminal_code] = r);
+
+  TERMINAL_ORDER.forEach(code => {
+    const run = byCode[code];
+    const st = statusOf(run);
+    const chip = document.createElement("button");
+    chip.className = "chip" + (activeTerminal === code ? " active" : "");
+    chip.type = "button";
+    chip.innerHTML = `<span class="dot dot-${st.cls}" aria-hidden="true"></span>${TERMINAL_LABELS[code]}`;
+    const detail = run ? (run.error_message || st.label) : "No data yet";
+    chip.title = detail;
+    chip.setAttribute("aria-label", `${TERMINAL_LABELS[code]}: ${st.label}. ${detail}`);
+    chip.setAttribute("aria-pressed", activeTerminal === code ? "true" : "false");
+    chip.addEventListener("click", () => {
+      activeTerminal = activeTerminal === code ? null : code;
+      render();
+    });
+    strip.insertBefore(chip, asOf);
+  });
+
+  const master = byCode["JNPT_MASTER"];
+  asOf.textContent = master && master.report_date
+    ? `Master report as of ${master.report_date}`
+    : "";
+}
+
+function renderFreshnessBanner(){
+  const el = document.getElementById("freshnessBanner");
+  const byCode = {};
+  (DATA.run_status || []).forEach(r => byCode[r.terminal_code] = r);
+  const master = byCode["JNPT_MASTER"];
+  const failedCount = (DATA.run_status || []).filter(r => r.status === "failed").length;
+
+  let html = "";
+  if(master && master.report_date && master.report_date !== todayIST()){
+    html += `<div class="banner warn"><span>⚠</span><span><b>Master report is not from today.</b>
+      It's dated ${master.report_date}; today is ${todayIST()}. The on-berth list below may be
+      a day behind until the next successful pull.</span></div>`;
+  }
+  if(failedCount > 0){
+    html += `<div class="banner"><span>⚠</span><span><b>${failedCount} of ${(DATA.run_status||[]).length}
+      sources could not be reached on the last run.</b> Click a red chip above for the error.
+      Expected-arrival detail for those terminals is showing sample data only until this clears.</span></div>`;
+  }
+  el.innerHTML = html;
+}
+
+function renderStats(){
+  const vessels = DATA.vessels || [];
+  // berthed_vessels is scraped per-terminal, straight from each terminal's
+  // own PDF -- currently only the 5 container terminals have a parser, so
+  // this is that scope, not every JNPT terminal port-wide.
+  const onBerth = (DATA.berthed_vessels || []).length;
+  const expected = vessels.filter(v => v.status === "expected").length;
+  const liveSources = (DATA.run_status || []).filter(r => r.status === "success").length;
+  const totalSources = (DATA.run_status || []).length;
+
+  const stats = [
+    [onBerth, "Vessels on berth, 5 container terminals"],
+    [expected, "Expected arrivals listed"],
+    [`${liveSources}/${totalSources}`, "Sources reachable this run"],
+  ];
+  document.getElementById("stats").innerHTML = stats.map(([v,l]) =>
+    `<div class="stat"><div class="stat-value">${v}</div><div class="stat-label">${l}</div></div>`
+  ).join("");
+}
+
+function matchesFilters(v){
+  if(activeTerminal && v.terminal_code !== activeTerminal) return false;
+  if(activeStatus !== "all" && v.status !== activeStatus) return false;
+  if(searchText){
+    const hay = [v.vessel_name, v.via_no, v.shipping_line, v.service].join(" ").toLowerCase();
+    if(!hay.includes(searchText.toLowerCase())) return false;
+  }
+  return true;
+}
+
+function renderTable(){
+  const vessels = allRows().filter(matchesFilters);
+  const tbody = document.getElementById("tableBody");
+  const emptyState = document.getElementById("emptyState");
+
+  if(vessels.length === 0){
+    tbody.innerHTML = "";
+    emptyState.hidden = false;
+    const heading = emptyState.querySelector("h3");
+    const para = emptyState.querySelector("p");
+    if(activeStatus === "sailed"){
+      heading.textContent = "No sailed-vessel data yet";
+      para.textContent = "This view populates once the pipeline captures a terminal's own \"vessels sailed\" panel — not part of the initial JNPT rollout.";
+    } else if(activeStatus === "expected" && vessels.length === 0){
+      heading.textContent = "No expected-arrival rows match this filter";
+      para.textContent = "Try clearing the search box or selecting a different terminal above.";
+    } else {
+      heading.textContent = "Nothing matches this filter";
+      para.textContent = "Try a different search term, or clear the selected terminal above.";
+    }
+    return;
+  }
+  emptyState.hidden = true;
+
+  tbody.innerHTML = vessels.map(v => `
+    <tr class="${v.is_sample ? 'sample-row' : ''}">
+      <td><span class="vessel-name">${v.vessel_name}</span>${v.is_sample ? '<span class="sample-tag">SAMPLE</span>' : ''}</td>
+      <td class="code">${v.via_no || "—"}</td>
+      <td>${v.service || '<span class="muted">—</span>'}</td>
+      <td>${v.shipping_line || '<span class="muted">—</span>'}</td>
+      <td class="hide-mobile">${v.agent || '<span class="muted">—</span>'}</td>
+      <td>${TERMINAL_LABELS[v.terminal_code] || v.terminal_code}</td>
+      <td class="hide-mobile code">${v.berth_no || "—"}</td>
+      <td><span class="status-pill status-${v.status}">${v.status}</span></td>
+      <td class="code">${fmtWhen(v)}</td>
+    </tr>
+  `).join("");
+}
+
+function renderTabs(){
+  const vessels = allRows();
+  const labels = {all:"All", berthed:"On berth", expected:"Expected", sailed:"Sailed"};
+  document.querySelectorAll("#statusTabs .tab").forEach(tab => {
+    const status = tab.dataset.status;
+    const n = status === "all" ? vessels.length : vessels.filter(v => v.status === status).length;
+    tab.innerHTML = `${labels[status]} <span class="count">(${n})</span>`;
+    tab.classList.toggle("active", activeStatus === status);
+    tab.setAttribute("aria-selected", activeStatus === status ? "true" : "false");
+  });
+}
+
+function renderSourceList(){
+  const byCode = {};
+  (DATA.run_status || []).forEach(r => byCode[r.terminal_code] = r);
+  document.getElementById("sourceList").innerHTML = TERMINAL_ORDER.map(code => {
+    const run = byCode[code];
+    const st = statusOf(run);
+    const detail = run
+      ? (run.status === "failed" ? (run.error_message || "Failed") : `${run.rows_found} rows · report dated ${run.report_date || "unknown"}`)
+      : "No run recorded";
+    return `<li><span class="dot dot-${st.cls}"></span><span><b>${TERMINAL_LABELS[code]}</b> — ${detail}</span></li>`;
+  }).join("");
+}
+
+function render(){
+  renderStatusStrip();
+  renderFreshnessBanner();
+  renderStats();
+  renderTabs();
+  renderTable();
+  renderSourceList();
+}
+
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  searchText = e.target.value;
+  renderTable();
+});
+document.querySelectorAll("#statusTabs .tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    activeStatus = tab.dataset.status;
+    render();
+  });
+});
+document.getElementById("refreshBtn").addEventListener("click", loadData);
+
+function tickClock(){
+  const now = new Date();
+  const t = now.toLocaleTimeString("en-GB", {timeZone:"Asia/Kolkata"});
+  document.getElementById("clock").textContent = t + " IST";
+}
+tickClock();
+setInterval(tickClock, 1000);
+
+loadData();
+</script>
+</body>
+</html>
