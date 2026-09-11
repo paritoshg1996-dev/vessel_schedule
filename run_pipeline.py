@@ -206,7 +206,12 @@ def export_data_json(session, out_path: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--database-url", default=os.environ.get("DATABASE_URL", "sqlite:///vessel_schedule.db"))
+    # `os.environ.get(key, default)` only falls back when the key is absent --
+    # but GitHub Actions sets a secret-backed env var to an EMPTY STRING (not
+    # unset) when that secret doesn't exist in the repo, e.g. `DATABASE_URL:
+    # ${{ secrets.DATABASE_URL }}` with no such secret set. `or` catches both
+    # "absent" and "present but empty" the same way.
+    parser.add_argument("--database-url", default=os.environ.get("DATABASE_URL") or "sqlite:///vessel_schedule.db")
     parser.add_argument("--master-fixture", default=None,
                          help="Read the JNPA master page from a local file instead of the network "
                               "(demo/test only -- omit this in production).")
@@ -216,11 +221,11 @@ def main():
                          help="Comma-separated terminal codes to run, e.g. --only NSICT,BMCT "
                               "(always runs JNPT_MASTER too, for link discovery). Useful for "
                               "validating one parser at a time against the live site.")
-    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL"),
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL") or None,
                          help="If set (or MONGO_URL env var), also mirror vessel_schedule/"
                               "berthed_vessels into this MongoDB after the run -- e.g. to feed "
                               "a separate app backend's API. Omit to skip Mongo entirely.")
-    parser.add_argument("--mongo-db-name", default=os.environ.get("MONGO_DB_NAME"),
+    parser.add_argument("--mongo-db-name", default=os.environ.get("MONGO_DB_NAME") or None,
                          help="Database name within --mongo-url. Must match whatever DB name "
                               "the reading backend uses, since these are just extra collections "
                               "in that same database.")
