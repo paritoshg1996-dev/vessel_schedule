@@ -18,8 +18,25 @@ Validated 2026-09-10 against a live fetch. Three things were wrong:
    `top_after` on the "Vessels Expected" panel itself.
 2. `EXPECTED_STOP_BEFORE` named phrases ("ON BERTH VESSEL", "APM
    Terminals Mumbai") that sit ABOVE the Vessels Expected panel, so they
-   can never bound its bottom. The real end of this panel is the
-   monthly cargo-summary block, headed "Group ALT" -- use that instead.
+   can never bound its bottom.
+
+   CAUGHT LIVE 2026-09-11, a day after the above shipped: I'd originally
+   bounded the bottom with "Group ALT", the first line of the monthly
+   cargo-summary block below this panel -- but "ALT" there isn't a fixed
+   label, it's DATA: the summary ranks destination codes by that day's
+   TEU volume, so whichever code tops the list becomes "Group ALT" (or
+   "Group CLP", or anything else) depending on the day. The morning this
+   changed, "Group ALT" simply wasn't found anywhere on the page, so no
+   bottom bound was set at all, and every row of that footer -- phone
+   numbers, "Customer Service Desk", the whole cargo-summary block --
+   got swept in as if it were vessel data (via lane picking up garbage
+   like "GROUP"/"CUSTOMER"/"CARGODESK"/"GATE:", closest lane wins with
+   nothing to stop it). Fixed by anchoring on "CFS PENDENCY" instead --
+   the actual (fixed) header phrase directly above that block, same
+   stable-structural-label pattern NSICT/NSFT already use for their own
+   "...PENDENCY" boundaries. Lesson: a stop-before/top_after anchor must
+   be verified as a fixed label, not a value that can vary with the
+   day's data -- re-check this if APMT's footer layout changes again.
 3. The header row has FOUR unlabeled date/time columns (Gate Open,
    Reefer Opening, Reefer Cut-Off, Cut-Off) between LOA and Service, and
    two more (Imp/Exp counts) after Line, with no lanes of their own.
@@ -71,7 +88,7 @@ from scrapers.pdf_common import (
 )
 
 EXPECTED_HEADERS = ["VIA", "Vessel Name", "Draft", "LOA", "Service", "Line"]
-EXPECTED_STOP_BEFORE = ["Group ALT"]
+EXPECTED_STOP_BEFORE = ["CFS PENDENCY"]
 
 BERTHED_HEADERS = [
     "Berth", "Vessel", "VIA", "LOA", "Alongside", "Berthing", "Side",
