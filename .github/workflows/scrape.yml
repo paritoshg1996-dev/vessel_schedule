@@ -49,6 +49,13 @@ jobs:
       - name: Run pipeline
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          # Optional: also mirror vessel_schedule/berthed_vessels into a
+          # MongoDB database for a separate app backend to serve over its
+          # own API (see pipeline/mongo_export.py). Omit both secrets to
+          # skip this entirely -- the SQL/data.json output isn't affected
+          # either way.
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
           ADMIN_ALERT_SLACK_WEBHOOK_URL: ${{ secrets.ADMIN_ALERT_SLACK_WEBHOOK_URL }}
           ADMIN_ALERT_EMAIL_TO: ${{ secrets.ADMIN_ALERT_EMAIL_TO }}
           ADMIN_ALERT_SMTP_HOST: ${{ secrets.ADMIN_ALERT_SMTP_HOST }}

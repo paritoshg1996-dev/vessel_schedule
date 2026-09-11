@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from models import BerthedVessel, IngestionRun, Terminal, VesselSchedule, get_engine, get_session, init_db, now_utc
 from pipeline.alerts import check_and_raise_alerts, notify_admin
+from pipeline.mongo_export import export_to_mongo
 from pipeline.normalize import normalize_and_upsert, normalize_and_upsert_berthed
 from pipeline.staging import stage_scrape_result
 from scrapers import SCRAPER_CLASSES
@@ -215,6 +216,14 @@ def main():
                          help="Comma-separated terminal codes to run, e.g. --only NSICT,BMCT "
                               "(always runs JNPT_MASTER too, for link discovery). Useful for "
                               "validating one parser at a time against the live site.")
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL"),
+                         help="If set (or MONGO_URL env var), also mirror vessel_schedule/"
+                              "berthed_vessels into this MongoDB after the run -- e.g. to feed "
+                              "a separate app backend's API. Omit to skip Mongo entirely.")
+    parser.add_argument("--mongo-db-name", default=os.environ.get("MONGO_DB_NAME"),
+                         help="Database name within --mongo-url. Must match whatever DB name "
+                              "the reading backend uses, since these are just extra collections "
+                              "in that same database.")
     args = parser.parse_args()
     only = set(c.strip().upper() for c in args.only.split(",")) if args.only else None
 
@@ -256,6 +265,21 @@ def main():
 
     payload = export_data_json(session, args.out)
     print(f"\nExported {len(payload['vessels'])} vessel_schedule rows to {args.out}")
+
+    if args.mongo_url:
+        if not args.mongo_db_name:
+            print("\n[MONGO] --mongo-url given but no --mongo-db-name/MONGO_DB_NAME -- skipping Mongo export.")
+        else:
+            try:
+                counts = export_to_mongo(session, args.mongo_url, args.mongo_db_name, terminal_meta)
+                print(f"\n[MONGO] Synced {counts['vessel_schedule']} vessel_schedule + "
+                      f"{counts['berthed_vessels']} berthed_vessels docs to '{args.mongo_db_name}'.")
+            except Exception as e:
+                # Mongo being briefly unreachable shouldn't fail a run whose SQL/JSON
+                # output already succeeded -- log loudly and move on; the next
+                # scheduled run tries again in a few hours.
+                print(f"\n[MONGO] Export failed (SQL/JSON output above is still valid): "
+                      f"{type(e).__name__}: {e}")
 
     session.close()
 
