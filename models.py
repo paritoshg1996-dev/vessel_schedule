@@ -16,6 +16,9 @@ Layer model:
                         terminal's own PDF -- deliberately separate from
                         vessel_schedule.status=='berthed' (which comes from the
                         JNPA master page instead; see the table's own docstring)
+  service_rotations -- reference data: named carrier services' fixed port
+                        rotations, keyed by (shipping_line, service) -- not
+                        scraped, see the table's own docstring
   alerts            -- anything an administrator should look at
 """
 from datetime import datetime, timezone
@@ -29,7 +32,7 @@ def now_utc() -> datetime:
 
 
 from sqlalchemy import (
-    Boolean, Column, DateTime, Date, Float, ForeignKey, Integer, String, Text,
+    Boolean, Column, DateTime, Date, Float, ForeignKey, Integer, JSON, String, Text,
     UniqueConstraint, create_engine
 )
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
@@ -166,6 +169,58 @@ class BerthedVessel(Base):
     source_run_id = Column(Integer, ForeignKey("ingestion_runs.id"))
     first_seen_at = Column(DateTime, default=now_utc)
     last_seen_at = Column(DateTime, default=now_utc)
+
+
+class ServiceRotation(Base):
+    """Reference data: the fixed, repeating string of ports a named
+    carrier service loop calls at, in order -- e.g. Maersk's "MECL"
+    service touches the same ports in the same order on every voyage.
+
+    This is deliberately NOT scraped from JNPT: no port's berthing
+    report publishes a vessel's onward rotation, only its own ETA/berth
+    detail. It's carrier-published schedule information, sourced
+    separately (see pipeline/rotations.py and
+    research/service_rotations.py) and refreshed occasionally rather
+    than every pipeline run, since a rotation rarely changes.
+
+    Keyed by (shipping_line, service) -- NOT by vessel or voyage --
+    because the rotation belongs to the service loop itself; whichever
+    vessel a carrier assigns to that service that week follows the same
+    string of ports. A vessel_schedule row's onward rotation is found by
+    looking up its own (shipping_line, service) here.
+
+    Many services in vessel_schedule are literally named "ADHOC" -- a
+    JNPT-side code for an unscheduled, one-off call, not a named loop.
+    Those get a row here too, with confidence='no_fixed_rotation', so
+    "we checked and there genuinely isn't one" stays distinguishable
+    from "not researched yet".
+    """
+    __tablename__ = "service_rotations"
+    __table_args__ = (
+        UniqueConstraint("shipping_line", "service", name="uq_service_rotation"),
+    )
+
+    id = Column(Integer, primary_key=True)
+    shipping_line = Column(String(64), nullable=False)  # matches vessel_schedule.shipping_line
+    service = Column(String(64), nullable=False)         # matches vessel_schedule.service
+    # Ordered list of {"port": str, "country": str|None, "unlocode": str|None},
+    # starting wherever the source published it from -- NOT necessarily
+    # starting at JNPT. [] if confidence is "no_fixed_rotation" or "unresolved".
+    ports = Column(JSON, nullable=False, default=list)
+    jnpt_index = Column(Integer)  # `ports` index that is JNPT/Nhava Sheva, or NULL if
+                                  # not found in the published rotation (e.g. "unresolved")
+    confidence = Column(String(24), nullable=False)
+    # "verified"           -- matched against the carrier's own published schedule
+    # "needs_verification" -- found via web search, not cross-checked against a
+    #                         primary carrier source; treat as a starting point
+    # "no_fixed_rotation"  -- e.g. "ADHOC": genuinely no fixed loop to publish
+    # "unresolved"         -- looked, couldn't confidently find one
+    source_url = Column(String(512))
+    notes = Column(Text)
+    researched_at = Column(DateTime, default=now_utc)
+    last_seen_in_schedule_at = Column(DateTime, default=now_utc)  # last time this (line,
+                                  # service) appeared in a live vessel_schedule row --
+                                  # tells "no longer relevant" apart from "never researched"
 
 
 class Alert(Base):
