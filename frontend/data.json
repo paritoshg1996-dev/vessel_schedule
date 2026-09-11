@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T07:01:34.543536Z",
+  "generated_at": "2026-09-11T08:23:37.396818Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 26,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T07:01:21.171229",
+      "started_at": "2026-09-11T08:23:29.233836",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 52,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T07:01:29.306180",
+      "started_at": "2026-09-11T08:23:33.715051",
       "error_type": null,
       "error_message": null
     },
@@ -25,9 +25,9 @@
       "terminal_code": "JNPT_MASTER",
       "scope": "master",
       "status": "success",
-      "rows_found": 3,
+      "rows_found": 4,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T07:01:19.406535",
+      "started_at": "2026-09-11T08:23:28.524935",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 30,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T07:01:32.165913",
+      "started_at": "2026-09-11T08:23:36.162991",
       "error_type": null,
       "error_message": null
     },
@@ -47,7 +47,7 @@
       "status": "success",
       "rows_found": 37,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T07:01:24.105368",
+      "started_at": "2026-09-11T08:23:30.721710",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 15,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T07:01:26.625965",
+      "started_at": "2026-09-11T08:23:32.344057",
       "error_type": null,
       "error_message": null
     }

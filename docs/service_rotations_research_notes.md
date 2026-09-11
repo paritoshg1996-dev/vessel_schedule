@@ -1,4 +1,4 @@
-# Service rotation research — coverage notes (2026-09-11)
+# Service rotation research — coverage notes (updated 2026-09-11, full pass)
 
 ## What this is
 
@@ -8,64 +8,100 @@ computed against — see `models.ServiceRotation` and `pipeline/rotations.py`
 for the schema and join logic. It is **not** scraped from JNPT; no port's
 berthing report publishes a vessel's rotation beyond its own call.
 
-## Scope of the current data
+**Directionality**: some services run a genuinely different port set/order
+eastbound vs westbound, not just each other's reverse (e.g. an extra
+transshipment call on only one leg). `ServiceRotation` is keyed by
+`(shipping_line, service, direction)`, so these get two rows, not one —
+see the model's own docstring. Confirmed directional splits found this
+pass: **CCA/BIGEX**, **GSL/NIX**, and (a genuine round-trip visiting JNPT
+twice, only partially resolved) **HMM/FIM-W**.
 
-As of this date, `vessel_schedule` (expected status) has **97 distinct
-(shipping_line, service) combinations**. Of those:
+## Coverage
 
-- **18 voyages** (across 11 different lines) use the service label
-  `ADHOC` — a JNPT-side code for an unscheduled, one-off call. There is
-  genuinely no fixed rotation for these; seeded with
-  `confidence="no_fixed_rotation"` rather than left looking unresearched.
-- **86 distinct named-service combinations** remain, of which **8 have
-  been researched** so far (`research/service_rotations_2026_09.py`) —
-  the highest-frequency ones, covering roughly a third of all
-  named-service *voyages* even though it's a small fraction of the
-  86 distinct combos (frequency is heavily skewed: most combos have
-  only 1 vessel currently listed).
+Of the **97 distinct (shipping_line, service) combinations** currently in
+`vessel_schedule` (expected status):
 
-## Confidence breakdown of the 8 researched
+- **74 of 97** now have at least one `service_rotations` row (up from
+  26 — 8 researched + 18 ADHOC — at the start of this pass).
+- **23 combinations remain completely unresearched**: `RCL/RWP`,
+  `MIL/MIX`, `LMC/INDME`, `MBK/IMSW`, `SIR/CSC`, `EGI/MJI`, `MSC/IAS`,
+  `SMM/JJS`, `MSK/MW2`, `CSS/SEI1`, `AKS/EAS`, `ECL/IG1`, `CSS/AIS`,
+  `UNF/SEI1`, `ESA/EA2`, `MIL/MGX`, `CCA/KMAMBO`, `CSS/CI1`, `CUL/CSC`,
+  `ONE/MIAX`, `UNF/MJI`, `HUE/CSC` — mostly single-voyage, harder-to-find
+  codes where a search turned up nothing usable at all.
 
-| Line/Service | Confidence | Why |
+76 rows total across those 74 combos (a few have 2 directional rows).
+
+## Confidence breakdown (76 rows)
+
+| Confidence | Count | Meaning |
 |---|---|---|
-| MAE/FI2 | verified | Maersk's own May 2026 launch announcement |
-| MSK/MECL | verified | Maersk's own July 2026 structural-change announcement |
-| MSC/INDUSA | needs_verification | Source from 2020; MSC has since made port-skip changes on India services generally |
-| CCA/BIGEX | needs_verification | Port set fairly confident; exact call order is a guess (CMA CGM runs 4 differently-named BIGEX variants, and vessel_schedule's plain "BIGEX" label doesn't say which) |
-| HLI/TPI | needs_verification | Hapag-Lloyd's own page, but 2+ years old relative to research date |
-| WHI/CI2 | needs_verification | Intra-Asia consortium loop; one port (Port Klang) appears twice in the source description, unconfirmed if that's a real double-call |
-| COS/AGI2 | **unresolved** | Conflicting info: the original AGI2 (2022) never called JNPT at all; a later "UIG2" service that replaced it does. JNPT's own live report still labels a real current vessel's service as "AGI2" — left unresolved rather than guessing which rotation actually applies today |
-| ONE/PS3 | **unresolved** | Search returned an implausible 14-port rotation spanning India, SE Asia, East Asia, and the US West Coast in one loop — almost certainly a search-summary conflation of multiple distinct ONE services. Discarded entirely. |
+| `needs_verification` | 38 | Found via search synthesis, not cross-checked against a primary carrier source |
+| `unresolved` | 17 | Looked, found nothing usable OR found a rotation that contradicts JNPT's own data (doesn't call Nhava Sheva at all) |
+| `verified` | 12 | Matched a carrier's own press release/page, reasonably current |
+| `no_fixed_rotation` | 11 | "ADHOC" lines — genuinely no fixed loop, not a research gap |
 
-## What this demonstrates about the "research via web search" approach
+**Read `verified` conservatively**: it means "found in the carrier's own
+official announcement," not "confirmed live against a current schedule
+database." Carrier sites and the one aggregator tried (Flexport Atlas)
+both return HTTP 403 to automated fetches, so nothing here came from a
+direct primary-source read — every result is search-summary synthesis.
 
-- Carrier sites and the one schedule aggregator tried (Flexport Atlas)
-  both return HTTP 403 to automated fetches — every result here came
-  from search-result synthesis, not a direct primary-source read. That's
-  a real reliability ceiling: "verified" here means "matched a carrier's
-  own press release found via search," not "confirmed against a live
-  schedule database."
-- Real failure modes hit in just 8 lookups: a carrier renaming/replacing
-  a service code without the port terminal's own label catching up
-  (COS/AGI2), multiple similarly-named variants of one service
-  (CCA/BIGEX), and one clearly-hallucinated/conflated multi-service
-  answer (ONE/PS3) that had to be thrown out rather than recorded.
-- Extrapolating: covering the remaining ~78 combos at this level of care
-  is a large, slow effort with a non-trivial "unresolved" and
-  "needs_verification" rate baked in — not a one-shot batch job.
+## Real failure modes hit, by category
+
+- **Rotation genuinely doesn't include JNPT.** `UNF/AGI`, `EGI/AGI`,
+  `MSK/SAFINA`, `COS/AGI2` (from the first pass) all have a real, findable
+  published rotation — that simply never calls Nhava Sheva — despite a
+  real, currently-arriving voyage in `vessel_schedule` using that exact
+  (line, service). Left `unresolved` rather than record a contradicted
+  rotation. This is the single most common reason for `unresolved`.
+- **Multiple similarly-named variants, JNPT's label doesn't say which.**
+  `CCA/BIGEX` (1/2/3/4), `CCA/EPIC` (EPIC1 vs EPIC2 vs COSCO's own EPIC3),
+  `CCA/MIDAS` (MIDAS1 vs MIDAS2), `SEC/CWX` (vs TS Lines' differently-owned
+  CWX2). Recorded the variant that's confirmed to call Nhava Sheva where
+  more than one exists, flagged in `notes`.
+- **Carrier identity assumed from context, not confirmed.** `EGI` was
+  first guessed as Evergreen (via a Flexport SCAC match on `AGI`), then
+  contradicted by later evidence (`EGI/CSX`, `EGI/CISC` line up with
+  Emirates Shipping Line's own launches instead). Left both possibilities
+  noted rather than silently "corrected" one over the other.
+- **Consortium loops shared across carrier brands.** The RWA/CIX/CISC/SI8/
+  CI6/VGI/CWX families are the same handful of physical loops, each
+  carrier partner logging JNPT's report under its own code name. Applied
+  the same rotation to multiple lines ONLY where a source explicitly
+  named the joint operators (e.g. Wan Hai + Hapag-Lloyd + Evergreen on
+  CIX) — never assumed sharing just because two lines used the same
+  service string.
+- **One discarded hallucination.** `ONE/PS3`'s first search returned an
+  implausible 14-port loop spanning India, SE Asia, East Asia, and the US
+  West Coast — almost certainly a conflation of multiple distinct ONE
+  services. Discarded entirely rather than recorded.
+- **A round trip that visits JNPT twice.** `HMM/FIM-W` is one 84-day loop
+  that calls Nhava Sheva on both the outbound and return leg. JNPT's own
+  "-W" (westbound) label implies it distinguishes which leg a given
+  voyage is on, but the source didn't make clear which of the two Nhava
+  Sheva calls that corresponds to — recorded a best guess, flagged as
+  the least confident entry in the whole set.
+
+## Displaying confidence (for whoever builds the UI/API layer next)
+
+`pipeline/rotations.py` has a module-level `EXPOSE_CONFIDENCE` flag,
+currently `True` — `rotation_summary()` includes `confidence`,
+`source_url`, and `notes` in its output while this data is still being
+built out and spot-checked. Flip it to `False` once the build is
+considered finalized, to show a clean "next ports" list without the
+research caveats attached; nothing about the underlying stored data
+changes, only what gets exposed downstream.
 
 ## Next steps (not yet done)
 
-- Continue researching the remaining ~78 named-service combos (most with
-  only 1 currently-listed voyage — lower payoff per lookup than the pilot
-  batch, but still real gaps).
-- Wire `service_rotations` + the `next_ports_for` join into
-  `pipeline/mongo_export.py` (a new collection, or precomputed
-  `next_ports`/`confidence` fields added to each `vessel_schedule`
-  document) so the app backend and website can actually display this.
-- Decide how to surface confidence to end users — e.g. "verified" shown
-  plainly, "needs_verification" with a visible caveat, "unresolved"
-  omitted or shown as "rotation not yet confirmed" rather than blank.
+- The remaining 23 unresearched combos, plus spot-checking any
+  `needs_verification` entry before treating it as reliable.
+- Wire `service_rotations` + `rotation_summary()` into
+  `pipeline/mongo_export.py` (e.g. a `rotation` field added to each
+  exported `vessel_schedule` document) so the app backend and website can
+  actually display this.
 - Re-run `seed_service_rotations.py` periodically (not on the 3-hourly
-  schedule — rotations change rarely) and reconcile stale entries whose
-  `last_seen_in_schedule_at` is old.
+  schedule — rotations change rarely) and reconcile entries whose
+  `last_seen_in_schedule_at` goes stale (the service dropped out of
+  current JNPT data).

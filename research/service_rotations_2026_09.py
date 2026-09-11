@@ -46,21 +46,39 @@ ROTATIONS = [
                  "Confirm against a current MSC advisory before relying on this.",
     },
     {
-        "shipping_line": "CCA",
-        "service": "BIGEX",
+        # Flexport Atlas confirmed this service runs as two directional legs
+        # (EASTBOUND Fujairah->Nhava Sheva, WESTBOUND Nhava Sheva->Fujairah)
+        # rather than one symmetric loop -- see models.ServiceRotation's
+        # docstring for why that means two rows, not one.
+        "shipping_line": "CCA", "service": "BIGEX", "direction": "eastbound",
         "ports": [
             {"port": "Fujairah", "country": "UAE"},
+            {"port": "Sohar", "country": "Oman"},
             {"port": "Nhava Sheva", "country": "India"},
             {"port": "Hazira", "country": "India"},
             {"port": "Mundra", "country": "India"},
-            {"port": "Sohar", "country": "Oman"},
         ],
         "confidence": "needs_verification",
         "source_url": "https://www.cma-cgm.com/news/4997/cma-cgm-to-strengthen-its-bigex-lines-network-connecting-the-indian-subcontinent-gulf-amp-red-sea",
         "notes": "CMA CGM runs MULTIPLE named BIGEX variants (BIGEX 1/2/3/4), each a different "
                  "rotation -- vessel_schedule's plain 'BIGEX' label doesn't say which one. Port "
-                 "SET above is reasonably confident; the CALL ORDER is a best guess from an "
-                 "eastbound/westbound description, not confirmed. Treat order with real caution.",
+                 "SET is reasonably confident (Flexport Atlas); this eastbound CALL ORDER "
+                 "within that set is a guess, not confirmed -- treat with real caution.",
+    },
+    {
+        "shipping_line": "CCA", "service": "BIGEX", "direction": "westbound",
+        "ports": [
+            {"port": "Nhava Sheva", "country": "India"},
+            {"port": "Hazira", "country": "India"},
+            {"port": "Mundra", "country": "India"},
+            {"port": "Sohar", "country": "Oman"},
+            {"port": "Fujairah", "country": "UAE"},
+        ],
+        "confidence": "needs_verification",
+        "source_url": "https://www.cma-cgm.com/news/4997/cma-cgm-to-strengthen-its-bigex-lines-network-connecting-the-indian-subcontinent-gulf-amp-red-sea",
+        "notes": "Westbound leg of the same service as the eastbound entry above -- assumed to "
+                 "be the reverse of the eastbound port SET (confirmed) in the same guessed order "
+                 "(not confirmed). Same BIGEX-1/2/3/4 variant-ambiguity caveat applies.",
     },
     {
         "shipping_line": "MAE",

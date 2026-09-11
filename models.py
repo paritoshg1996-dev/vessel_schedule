@@ -183,26 +183,39 @@ class ServiceRotation(Base):
     research/service_rotations.py) and refreshed occasionally rather
     than every pipeline run, since a rotation rarely changes.
 
-    Keyed by (shipping_line, service) -- NOT by vessel or voyage --
-    because the rotation belongs to the service loop itself; whichever
-    vessel a carrier assigns to that service that week follows the same
-    string of ports. A vessel_schedule row's onward rotation is found by
-    looking up its own (shipping_line, service) here.
+    Keyed by (shipping_line, service, direction) -- NOT by vessel or
+    voyage -- because the rotation belongs to the service loop itself;
+    whichever vessel a carrier assigns to that service that week follows
+    the same string of ports. `direction` exists because many services
+    are NOT simple symmetric loops: an eastbound leg and a westbound leg
+    of the same named service can call at a genuinely different port set
+    or order, not just each other's reverse (e.g. a pendulum service that
+    only calls a given transshipment hub in one direction). Two rows for
+    the same (shipping_line, service) with different `direction` values
+    are both legitimate, not a duplicate. Services that really are one
+    undifferentiated loop use direction="single".
+
+    A vessel_schedule row's onward rotation is found by looking up its
+    own (shipping_line, service) here -- when both directions exist and
+    the scrape itself doesn't say which one a given voyage is on, callers
+    get both back rather than a guessed one; see rotation_summary() in
+    pipeline/rotations.py.
 
     Many services in vessel_schedule are literally named "ADHOC" -- a
     JNPT-side code for an unscheduled, one-off call, not a named loop.
-    Those get a row here too, with confidence='no_fixed_rotation', so
-    "we checked and there genuinely isn't one" stays distinguishable
-    from "not researched yet".
+    Those get a row here too (direction="single"), with
+    confidence='no_fixed_rotation', so "we checked and there genuinely
+    isn't one" stays distinguishable from "not researched yet".
     """
     __tablename__ = "service_rotations"
     __table_args__ = (
-        UniqueConstraint("shipping_line", "service", name="uq_service_rotation"),
+        UniqueConstraint("shipping_line", "service", "direction", name="uq_service_rotation"),
     )
 
     id = Column(Integer, primary_key=True)
     shipping_line = Column(String(64), nullable=False)  # matches vessel_schedule.shipping_line
     service = Column(String(64), nullable=False)         # matches vessel_schedule.service
+    direction = Column(String(16), nullable=False, default="single")  # "eastbound" | "westbound" | "single"
     # Ordered list of {"port": str, "country": str|None, "unlocode": str|None},
     # starting wherever the source published it from -- NOT necessarily
     # starting at JNPT. [] if confidence is "no_fixed_rotation" or "unresolved".
