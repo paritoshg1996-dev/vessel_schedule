@@ -8,6 +8,7 @@ opening, and report-date extraction live here once.
 from __future__ import annotations
 
 import io
+import re
 from datetime import date, datetime
 from typing import Optional
 
@@ -114,6 +115,83 @@ def parse_relative_datetime(s: Optional[str], report_date: Optional[date],
     if (dt.date() - report_date).days < -max_backward_days:
         dt = dt.replace(year=dt.year + 1)
     return dt
+
+
+def parse_gate_cutoff(s: Optional[str], report_date: Optional[date],
+                       max_backward_days: int = 20, near: Optional[datetime] = None):
+    """"10/1500" -- day and 24h time glued together, with NO month at all
+    (unlike ETA, which at least carries day/month). Anchored to the
+    report's own month/year, with a rollover check for a cutoff landing
+    just after month-end. Originally written for NSICT/NSIGT
+    (dpworld_common.py); promoted here once MICT's own "CUT-OFF" column
+    turned out to print the exact same shape (see scrapers/mict.py) --
+    one parser, not two copies to keep in sync.
+
+    `near` (added for MICT): pass this row's own already-parsed `eta`
+    when the caller has one. NSICT/NSIGT's cutoffs are always within a
+    day or two of the report itself, so the plain report_date + a fixed
+    `max_backward_days` threshold was fine -- but MICT's "vessels
+    expected" list runs three-plus weeks out, and CAUGHT LIVE: a cutoff
+    of "01/1600" against a report_date of the 11th naively reads as the
+    1st of the SAME month (10 days in the past, i.e. under any sane
+    max_backward_days threshold) when it actually belonged to next
+    month, matching a vessel whose own ETA was three weeks later still.
+    A fixed distance-from-report_date threshold can't tell those two
+    cases apart; comparing against the row's OWN eta (which carries a
+    real month, unlike this column) can. When `near` is given, this
+    replaces the max_backward_days heuristic entirely: whichever of
+    "report_date's month" or "the next month" lands the cutoff closer
+    to `near` wins."""
+    s = (s or "").strip()
+    if not s or report_date is None:
+        return None
+    m = re.match(r"^(\d{1,2})/(\d{3,4})$", s)
+    if not m:
+        return None
+    day = int(m.group(1))
+    hhmm = m.group(2).zfill(4)
+    hour, minute = int(hhmm[:2]), int(hhmm[2:])
+
+    next_month, next_year = report_date.month + 1, report_date.year
+    if next_month > 12:
+        next_month, next_year = 1, next_year + 1
+
+    def _build(year, month):
+        try:
+            return datetime(year, month, day, hour, minute)
+        except ValueError:
+            return None
+
+    dt = _build(report_date.year, report_date.month)
+    if dt is None:
+        return None
+
+    if near is not None:
+        dt_next = _build(next_year, next_month)
+        if dt_next is not None and abs((dt_next - near).total_seconds()) < abs((dt - near).total_seconds()):
+            dt = dt_next
+        return dt
+
+    if (dt.date() - report_date).days < -max_backward_days:
+        dt = _build(next_year, next_month) or dt
+    return dt
+
+
+def insert_glued_time_colon(s: Optional[str]) -> str:
+    """Some sources (Adani's Mundra PDF) glue a bare 4-digit HHMM straight
+    onto the end of a date string with no separator at all -- "12-Sep
+    0300", "13-Sep Sat 1600" -- unlike JNPT's own reports, which at least
+    put a colon or a "/" between date and time. dateutil reads a bare
+    trailing "0300" as more date digits, not a time, unless something
+    marks it as one. Inserts ":" before the last two digits of a
+    trailing exactly-4-digit run and returns the result for
+    `parse_relative_datetime` to parse normally; a no-op (returns the
+    stripped input) on any string that doesn't end that way."""
+    s = (s or "").strip()
+    m = re.match(r"^(.*\D)(\d{2})(\d{2})$", s)
+    if not m:
+        return s
+    return f"{m.group(1).strip()} {m.group(2)}:{m.group(3)}"
 
 
 def disambiguate_leftmost(words: list[dict], text: str, near_top: float,

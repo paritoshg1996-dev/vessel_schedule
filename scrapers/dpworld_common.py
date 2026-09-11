@@ -39,7 +39,7 @@ trick needed here, unlike BMCT's two "Cut-OFF" words. ETA prints as
 "Thu/10/09 06:00" (weekday/day/month, no year -- dateutil handles the
 weekday prefix fine on its own). GATE CUTOFF prints as "10/1500" --
 day and 24h time glued together with NO month at all, so it gets its
-own small parser (`_parse_gate_cutoff`) anchored to the report's own
+own small parser (`pdf_common.parse_gate_cutoff`) anchored to the report's own
 month/year, with a rollover check for a cutoff landing just after
 month-end. IMP/EXP/DRY/REEFER (unlabeled cargo-count columns between
 VOA and ETA) are added as boundary-only lanes so they don't bleed into
@@ -66,7 +66,9 @@ checked against real fetched PDFs for both terminals.
 import re
 
 from scrapers.base import ScrapedRow, ScrapeResult, find_phrase_boxes, snap_table_by_headers
-from scrapers.pdf_common import PdfTerminalScraper, parse_relative_datetime, parse_report_date
+from scrapers.pdf_common import (
+    PdfTerminalScraper, parse_gate_cutoff, parse_relative_datetime, parse_report_date,
+)
 
 EXPECTED_HEADERS = [
     "VESSEL NAME", "VIA", "LOA", "SERVICE", "VOA", "ETA", "GATE CUTOFF",
@@ -132,35 +134,6 @@ def _pick_berth_no_word(words: list[dict], header_row_top: float) -> None:
         return
     berth_no_word = min(candidates, key=lambda w: w["x0"])
     berth_no_word["text"] = _BERTH_NO_SENTINEL
-
-
-def _parse_gate_cutoff(s: str, report_date, max_backward_days: int = 20):
-    """"10/1500" -- day and 24h time glued together, with NO month at all
-    (unlike ETA, which at least carries day/month). Anchored to the
-    report's own month/year, with a rollover check for a cutoff landing
-    just after month-end."""
-    s = (s or "").strip()
-    if not s or report_date is None:
-        return None
-    m = re.match(r"^(\d{1,2})/(\d{3,4})$", s)
-    if not m:
-        return None
-    day = int(m.group(1))
-    hhmm = m.group(2).zfill(4)
-    try:
-        from datetime import datetime
-        dt = datetime(report_date.year, report_date.month, day, int(hhmm[:2]), int(hhmm[2:]))
-    except ValueError:
-        return None
-    if (dt.date() - report_date).days < -max_backward_days:
-        month, year = report_date.month + 1, report_date.year
-        if month > 12:
-            month, year = 1, year + 1
-        try:
-            dt = dt.replace(year=year, month=month)
-        except ValueError:
-            return None
-    return dt
 
 
 class DpWorldTerminalScraper(PdfTerminalScraper):
@@ -266,7 +239,7 @@ class DpWorldTerminalScraper(PdfTerminalScraper):
                 "shipping_line": voa_tokens[0] if voa_tokens else None,
                 "agent": None,
                 "eta": parse_relative_datetime(eta_raw, report_date),
-                "gate_cutoff": _parse_gate_cutoff(_degarble_char_spaced(r.get("GATE CUTOFF", "")), report_date),
+                "gate_cutoff": parse_gate_cutoff(_degarble_char_spaced(r.get("GATE CUTOFF", "")), report_date),
             }
             rows.append(ScrapedRow(section="expected", fields=fields, raw=r))
 

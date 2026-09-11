@@ -35,10 +35,18 @@ from scrapers.registry import TERMINALS
 
 
 def ensure_terminals_seeded(session):
-    if session.query(Terminal).count() == 0:
-        for t in TERMINALS:
+    """Insert any TERMINALS entry not already in the DB. Originally just
+    "seed once if the table's empty" -- changed when Mundra's terminals
+    were added post-launch: a DB that already had JNPT's terminals
+    seeded from the very first run would otherwise never pick up new
+    registry rows at all (an empty-table check is a one-time bootstrap,
+    not an ongoing sync). Existing rows are left untouched; this only
+    adds what's missing, keyed by terminal_code."""
+    existing = {t.terminal_code for t in session.query(Terminal).all()}
+    for t in TERMINALS:
+        if t["terminal_code"] not in existing:
             session.add(Terminal(**t))
-        session.commit()
+    session.commit()
 
 
 def run_one_scraper(session, terminal_code: str, scope: str, scraper) -> IngestionRun:

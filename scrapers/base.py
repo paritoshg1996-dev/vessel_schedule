@@ -136,6 +136,7 @@ def snap_table_by_headers(
     bottom_before_labels: Optional[list[str]] = None,
     row_tolerance: float = 3.0,
     min_filled: int = 2,
+    header_margin: float = 1.0,
 ) -> list[dict]:
     """Reconstruct a table by column position rather than text order.
 
@@ -153,6 +154,18 @@ def snap_table_by_headers(
     Returns a list of {header_label: value} dicts, top-to-bottom.
     Raises ParseError if fewer than half the requested headers are found
     at all -- that's the schema-drift signal a source has changed shape.
+
+    `header_margin` (added after a live fetch of Adani's Mundra PDF)
+    is the buffer added past the header row's own bottom (and subtracted
+    before a `bottom_before` boundary) when deciding which words count as
+    "data". The default of 1pt was fine for every JNPT report, whose
+    header-to-first-row gap is comfortably larger than that -- but
+    Adani's combined 4-terminal PDF has extremely tight line spacing
+    (~3.7pt row height, with per-row jitter on individual header words),
+    so a flat "+1" silently swallowed each panel's own row 1 into the
+    excluded zone (its top landed *inside* header_bottom+1). Pass a
+    smaller value (e.g. 0.1) for a source this tightly leaded; the
+    default stays 1.0 so every existing caller is unaffected.
     """
     header_boxes = {}
     for label in header_labels:
@@ -173,14 +186,14 @@ def snap_table_by_headers(
 
     bottom = None
     for label in (bottom_before_labels or []):
-        tops = [b["top"] for b in find_phrase_boxes(words, label) if b["top"] > header_bottom + 2]
+        tops = [b["top"] for b in find_phrase_boxes(words, label) if b["top"] > header_bottom + header_margin]
         if tops:
             cand = min(tops)
             bottom = cand if bottom is None else min(bottom, cand)
 
     data_words = [
         w for w in words
-        if w["top"] > header_bottom + 1 and (bottom is None or w["top"] < bottom - 1)
+        if w["top"] > header_bottom + header_margin and (bottom is None or w["top"] < bottom - header_margin)
     ]
     data_words.sort(key=lambda w: w["top"])
 
