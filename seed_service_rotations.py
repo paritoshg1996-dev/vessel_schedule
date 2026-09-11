@@ -24,39 +24,66 @@ from models import ServiceRotation, get_engine, get_session, init_db, now_utc
 JNPT_ALIASES = {"nhava sheva", "jnpt", "jawaharlal nehru port", "jawaharlal nehru"}
 
 # Carrier names decoded from the abbreviation vessel_schedule.shipping_line
-# actually holds, built up from what each service-rotation search turned
-# up along the way (e.g. searching "CCA ... BIGEX" kept surfacing CMA
-# CGM's own pages). Deliberately incomplete: a code with no confident
-# match anywhere in that research is left OUT of this dict rather than
-# guessed, and comes through as shipping_line_name=NULL -- same "don't
-# guess" discipline as the rotations themselves. A couple of these are
-# still genuinely uncertain even where a name IS recorded; see the
-# specific ServiceRotation row's own `notes` for that (e.g. "EGI").
+# actually holds. Primary source: JNPA's own official "List of Shipping
+# Agencies Registered" (https://www.jnport.gov.in/page/list-of-shipping-
+# agencies-registered/..., PDF at .../uploads/content_manager/
+# shipping_Agencies.pdf) -- a Sr.No./Id/Name/SCAC/BIC table of every
+# agency registered at the port. Our `shipping_line` values are that
+# registry's own codes with the trailing digit stripped (e.g. registry
+# "EGI1" -> our "EGI"), which is what let this resolve a prior mistake:
+# EGI was earlier guessed as Emirates Shipping Line from circumstantial
+# pattern-matching (CSX/CISC rotations found via Emirates' own press
+# releases); the registry instead lists EGI1 as "EVERGREEN SHIPPING
+# AGENCY (INDIA)" -- confirmed here as Evergreen. The CSX/CISC rotation
+# data itself is left as originally recorded (still plausible if
+# Evergreen also holds a slot on that consortium loop), just re-flagged.
+#
+# A handful of codes here (MAE, WHL, COS, ISL, CUL, TSC) don't have an
+# exact match in the registry under that precise code, but were kept
+# from the earlier round of research (global SCAC conventions / strong
+# contextual matches from the rotation searches themselves) with a note
+# added below -- everything else in this dict is a direct registry hit.
+# A code with no confident match ANYWHERE (registry included) is left
+# OUT of this dict rather than guessed, and comes through as
+# shipping_line_name=NULL -- same "don't guess" discipline as the
+# rotations themselves.
 CARRIER_NAMES = {
-    "MSC": "Mediterranean Shipping Company (MSC)",
-    "MAE": "Maersk",
-    "MSK": "Maersk",
-    "CCA": "CMA CGM",
-    "HLI": "Hapag-Lloyd",
-    "WHI": "Wan Hai Lines",
-    "WHL": "Wan Hai Lines",
-    "COS": "COSCO Shipping Lines",
-    "PIL": "Pacific International Lines",
-    "ISL": "Interasia Lines",
-    "OCL": "OOCL (Orient Overseas Container Line)",
-    "ONE": "Ocean Network Express",
-    "HMM": "HMM (Hyundai Merchant Marine)",
-    "CUL": "CU Lines",
-    "GSL": "Gold Star Line",
-    "RCL": "Regional Container Lines",
-    "KMD": "KMTC (Korea Marine Transport Co.)",
-    "ESA": "Emirates Shipping Line",
-    "UNF": "Unifeeder",
-    "SEC": "X-Press Feeders (Sea Consortium)",
-    # Found via CSX/CISC (Emirates Shipping Line's own launches) but
-    # EGI/AGI's research pointed to Evergreen instead -- genuinely
-    # ambiguous, not a typo. See that row's own `notes`.
-    "EGI": "Emirates Shipping Line (unconfirmed -- possibly Evergreen instead, see notes)",
+    "MSC": "Mediterranean Shipping Company (MSC)",  # registry: MSC1 "MSC AGENCY INDIA PVT LTD"
+    "MSK": "Maersk",  # registry: MSK3 "MAERSK LINE INDIA PVT LTD"
+    "MAE": "Maersk (not found under this exact code in the registry, which lists Maersk as MSK3 -- kept via Maersk's global SCAC 'MAEU')",
+    "CCA": "CMA CGM",  # registry: CCA1 "CMA CGM AGENCIES (I) PLTD-A/C CMA"
+    "HLI": "Hapag-Lloyd",  # registry: HLI1 "HAPAG LLOYD INDIA PVT LTD"
+    "WHI": "Wan Hai Lines",  # registry: WHI1 "WAN HAI LINES (INDIA) PVT LTD"
+    "WHL": "Wan Hai Lines (not found under this exact code in the registry, which lists Wan Hai as WHI1 -- kept from context: paired with WHI/WHI1 across the CI6/SI8 consortium research)",
+    "OCL": "OOCL (Orient Overseas Container Line)",  # registry: OCL1 "OOCL(ORIENT OVERSEAS CONTR LINES)"
+    "ONE": "Ocean Network Express",  # registry: ONE1 "ONE (OCEAN NETWORK EXPRESS) LINE"
+    "HMM": "HMM (Hyundai Merchant Marine)",  # registry: HMM1 "HYUNDAI MERCHANT MARINE INDIA P LTD" -- exact match
+    "PIL": "Pacific International Lines",  # registry: PIL4/PIL2 "PIL (INDIA)"/"PIL MUMBAI"
+    "ISL": "Interasia Lines (registry lists Interasia's own code as INA1, not ISL -- kept from strong vessel-name evidence, e.g. 'INTERASIA ACCLERATE'/'INTERASIA TRANSCEND')",
+    "COS": "COSCO Shipping Lines (registry lists COSCO's own code as CSP1/CSP3, not COS -- kept from the AGI2 research, which independently confirmed COSCO as the operator)",
+    "CUL": "CU Lines (registry's own 'CUL1' entry is actually the local AGENT 'SEAHORSE SHIP AGENCIES PVT LTD' representing this principal, not a company literally named CU Lines -- kept the carrier brand name since that's what the rotation research found operating the IMR service)",
+    "GSL": "Gold Star Line",  # registry: GLD1 "STAR SHIPPING SERVICE (I) P LTD-GSL" -- explicitly named as GSL's own agent
+    "RCL": "Regional Container Lines",  # registry: RCL2/RCA1 "RCL AGENCIES (INDIA)"
+    "KMD": "KMTC (Korea Marine Transport Co.)",  # registry: KMD1 "KMTC ( India ) PVT. LTD." -- exact match
+    "ESA": "Emirates Shipping Agencies (India)",  # registry: ESA1 "EMIRATES SHIPPING AGENCIES(I) P LTD" -- exact match
+    "UNF": "Unifeeder",  # registry: UNF1 "UNIFEEDER AGENCIES INDIA PVT LTD" -- exact match
+    "SEC": "X-Press Feeders (Sea Consortium Shipping India)",  # registry: SEC1 "SEA CONSORTIUM SHIPPING (INDIA)" -- exact match
+    "EGI": "Evergreen Line (Evergreen Shipping Agency India)",  # registry: EGI1 "EVERGREEN SHIPPING AGENCY (INDIA)" --
+                                  # exact match; corrects an earlier guess of "Emirates Shipping Line"
+    "DMA": "Diamond Maritime Agency",  # registry: DMA3 "DIAMOND MARITIME AGENCY PVT. LTD." -- exact match
+    "ECL": "Evershine Container Line",  # registry: ECL3 "EVERSHINE CONTAINER LINE PRIVATE LIMITED" -- exact match
+    "EMS": "Efficient Marine Services",  # registry: EMS1 "EFFICIENT MARINE SERVICES LLP" -- exact match
+    "KIN": "Kin-Ship Services (India)",  # registry: KIN1 "KIN-SHIP SERVICES (INDIA) PVT LTD" -- exact match
+    "PMA": "Parekh Marine Agencies",  # registry: PMA1/PMA3 "PAREKH MARINE AGENCIES/SERVICES" -- exact match
+    "SMM": "Sima Marine (India)",  # registry: SMM3 "SIMA MARINE (INDIA) PVT LTD" -- exact match
+    "TNS": "Transnational Shipping India",  # registry: TNS1 "TRANSNATIONAL SHIPPING INDIA PVT LTD" -- exact match
+    "MIL": "Poseidon Shipping Agency",  # registry: MIL1 "POSEIDON SHIPPING AGENCY PVT LTD" -- exact match
+    "CSS": "Combined Shipping Services",  # registry: CSS1 "COMBINED SHIPPING SERVICES PVT LTD" -- exact match
+    "MBK": "MBK Logistix",  # registry: MBK1 "MBK LOGISTIX PVT LTD" -- exact match
+    "TSC": "T.S. Lines (registry's own code for this carrier appears to be TSI, not TSC exactly -- close enough to flag as likely the same, not confirmed)",
+    # AKS, EMT, RGS, SBB, SMD, TST, WAN: no confident match found anywhere,
+    # registry included ("TST2" in the registry is a dummy/test entry, not
+    # a real carrier) -- deliberately absent from this dict.
 }
 
 

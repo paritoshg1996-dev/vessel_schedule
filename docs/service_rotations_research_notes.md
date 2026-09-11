@@ -93,6 +93,27 @@ considered finalized, to show a clean "next ports" list without the
 research caveats attached; nothing about the underlying stored data
 changes, only what gets exposed downstream.
 
+## Carrier-name decoding (added 2026-09-11)
+
+`shipping_line_name` (a new column on `service_rotations`) decodes the
+abbreviation, using JNPA's own official "List of Shipping Agencies
+Registered" (a Sr.No./Id/Name/SCAC/BIC table published at
+`jnport.gov.in/uploads/content_manager/shipping_Agencies.pdf`) as the
+primary source — see `seed_service_rotations.py`'s `CARRIER_NAMES` for
+the full mapping and per-entry citations. **29 of 36** distinct line
+codes now have a name; 7 remain unidentified (`AKS`, `EMT`, `RGS`,
+`SBB`, `SMD`, `TST`, `WAN` — `TST` in particular turned out to be a
+dummy/test entry in the registry itself, not a real carrier).
+
+This also **corrected a mistake**: `EGI` was earlier guessed as Emirates
+Shipping Line from circumstantial evidence (the `CSX`/`CISC` rotations
+were found via Emirates' own press releases). The official registry
+instead lists `EGI1` as "EVERGREEN SHIPPING AGENCY (INDIA)" — confirmed
+as Evergreen. `EGI/CSX`'s confidence was downgraded from `verified` to
+`needs_verification` accordingly, since the rotation itself was found
+under the wrong carrier's announcement and hasn't been independently
+confirmed as Evergreen's own slot.
+
 ## Next steps (not yet done)
 
 - The remaining 23 unresearched combos, plus spot-checking any

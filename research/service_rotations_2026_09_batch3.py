@@ -253,10 +253,15 @@ ROTATIONS = [
         "notes": "See ESA/VGI above -- same consortium loop.",
     },
     {
-        # CSX2 = Emirates Shipping Line's own China-South India-Red Sea
-        # service; EGI's identity is more likely "Emirates" (matches VGI and
-        # CSX both being ESL launches) than "Evergreen" as guessed in batch1
-        # for EGI/AGI -- flagging that earlier guess as now doubtful.
+        # RESOLVED LATER (see seed_service_rotations.py's CARRIER_NAMES):
+        # JNPA's own official registry confirms EGI = Evergreen, not
+        # Emirates Shipping Line as guessed when this entry was researched.
+        # The rotation below was found via an EMIRATES press release --
+        # downgraded to needs_verification since it's no longer clear this
+        # specific rotation is actually Evergreen's own slot (plausible if
+        # Evergreen also holds a slot on the same consortium loop, per the
+        # same shared-loop pattern seen elsewhere in this research, but not
+        # independently confirmed for Evergreen specifically).
         "shipping_line": "EGI", "service": "CSX", "direction": "single",
         "ports": [
             {"port": "Shanghai", "country": "China"},
@@ -267,13 +272,14 @@ ROTATIONS = [
             {"port": "Mundra", "country": "India"},
             {"port": "Port Klang", "country": "Malaysia"},
         ],
-        "confidence": "verified",
+        "confidence": "needs_verification",
         "source_url": "https://logistics-manager.com/emirates-shipping-line-launches-csx2-service-to-boost-china-india-trade-and-red-sea-transshipment/",
-        "notes": "Emirates Shipping Line's own CSX2 launch, first sailing 11 June 2026 -- very "
-                 "current. NOTE: this identification of 'EGI' as Emirates Shipping Line (rather "
-                 "than Evergreen, guessed in batch1's EGI/AGI entry) is more likely correct given "
-                 "EGI also appears on this VGI/CSX Emirates-launched pattern -- treat EGI/AGI's "
-                 "carrier attribution as doubtful.",
+        "notes": "Found via Emirates Shipping Line's own CSX2 launch announcement (11 June "
+                 "2026) while EGI was mis-identified as Emirates -- JNPA's official registry "
+                 "has since confirmed EGI is actually Evergreen. This rotation may still be "
+                 "correct (Evergreen could hold its own slot on the same consortium loop, as "
+                 "seen elsewhere in this research) but that's not independently confirmed, "
+                 "hence the downgrade from 'verified'.",
     },
     {
         "shipping_line": "TSC", "service": "CISC", "direction": "single",

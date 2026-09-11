@@ -239,11 +239,12 @@ ROTATIONS = [
         "confidence": "unresolved",
         "source_url": "https://atlas.flexport.com/service/code:EGLV:AGI",
         "notes": "Same AGI service, found under Evergreen's own SCAC (EGLV) -- same "
-                 "non-JNPT-calling rotation problem as UNF/AGI above. CAVEAT ADDED LATER: "
-                 "batch3's research (EGI/CSX, EGI/CISC) makes it more likely 'EGI' actually "
-                 "means Emirates Shipping Line, not Evergreen -- this entry's Evergreen "
-                 "attribution is now doubtful, though it doesn't change the outcome (still "
-                 "unresolved either way).",
+                 "non-JNPT-calling rotation problem as UNF/AGI above. RESOLVED LATER: "
+                 "JNPA's own official shipping-agencies registry (see seed_service_rotations."
+                 "py's CARRIER_NAMES) confirms EGI = Evergreen after all -- an intermediate "
+                 "guess in batch3 that it might instead be Emirates Shipping Line was wrong "
+                 "and has been corrected. Doesn't change this entry's own outcome though "
+                 "(still unresolved -- the rotation just doesn't call JNPT).",
     },
     {
         "shipping_line": "ISL", "service": "VTI", "direction": "single",
