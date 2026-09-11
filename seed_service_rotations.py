@@ -23,6 +23,42 @@ from models import ServiceRotation, get_engine, get_session, init_db, now_utc
 
 JNPT_ALIASES = {"nhava sheva", "jnpt", "jawaharlal nehru port", "jawaharlal nehru"}
 
+# Carrier names decoded from the abbreviation vessel_schedule.shipping_line
+# actually holds, built up from what each service-rotation search turned
+# up along the way (e.g. searching "CCA ... BIGEX" kept surfacing CMA
+# CGM's own pages). Deliberately incomplete: a code with no confident
+# match anywhere in that research is left OUT of this dict rather than
+# guessed, and comes through as shipping_line_name=NULL -- same "don't
+# guess" discipline as the rotations themselves. A couple of these are
+# still genuinely uncertain even where a name IS recorded; see the
+# specific ServiceRotation row's own `notes` for that (e.g. "EGI").
+CARRIER_NAMES = {
+    "MSC": "Mediterranean Shipping Company (MSC)",
+    "MAE": "Maersk",
+    "MSK": "Maersk",
+    "CCA": "CMA CGM",
+    "HLI": "Hapag-Lloyd",
+    "WHI": "Wan Hai Lines",
+    "WHL": "Wan Hai Lines",
+    "COS": "COSCO Shipping Lines",
+    "PIL": "Pacific International Lines",
+    "ISL": "Interasia Lines",
+    "OCL": "OOCL (Orient Overseas Container Line)",
+    "ONE": "Ocean Network Express",
+    "HMM": "HMM (Hyundai Merchant Marine)",
+    "CUL": "CU Lines",
+    "GSL": "Gold Star Line",
+    "RCL": "Regional Container Lines",
+    "KMD": "KMTC (Korea Marine Transport Co.)",
+    "ESA": "Emirates Shipping Line",
+    "UNF": "Unifeeder",
+    "SEC": "X-Press Feeders (Sea Consortium)",
+    # Found via CSX/CISC (Emirates Shipping Line's own launches) but
+    # EGI/AGI's research pointed to Evergreen instead -- genuinely
+    # ambiguous, not a typo. See that row's own `notes`.
+    "EGI": "Emirates Shipping Line (unconfirmed -- possibly Evergreen instead, see notes)",
+}
+
 
 def _find_jnpt_index(ports: list[dict]) -> "int | None":
     for i, p in enumerate(ports):
@@ -40,6 +76,7 @@ def _upsert(session, shipping_line: str, service: str, direction: str, ports: li
     ).one_or_none()
 
     values = dict(
+        shipping_line_name=CARRIER_NAMES.get(shipping_line),
         ports=ports,
         jnpt_index=_find_jnpt_index(ports),
         confidence=confidence,
@@ -103,6 +140,10 @@ def main():
 
     session.commit()
     print(f"\n{counts['inserted']} inserted, {counts['updated']} updated.")
+    unnamed = sorted(set(r.shipping_line for r in session.query(ServiceRotation).all()
+                          if not r.shipping_line_name))
+    if unnamed:
+        print(f"Shipping lines with no decoded name on record ({len(unnamed)}): {', '.join(unnamed)}")
 
 
 if __name__ == "__main__":

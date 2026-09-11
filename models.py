@@ -214,6 +214,9 @@ class ServiceRotation(Base):
 
     id = Column(Integer, primary_key=True)
     shipping_line = Column(String(64), nullable=False)  # matches vessel_schedule.shipping_line
+    shipping_line_name = Column(String(128))  # decoded carrier name, e.g. "MSK" -> "Maersk" --
+                                  # NULL where the abbreviation couldn't be confidently identified
+                                  # (see CARRIER_NAMES in seed_service_rotations.py); never guessed
     service = Column(String(64), nullable=False)         # matches vessel_schedule.service
     direction = Column(String(16), nullable=False, default="single")  # "eastbound" | "westbound" | "single"
     # Ordered list of {"port": str, "country": str|None, "unlocode": str|None},
