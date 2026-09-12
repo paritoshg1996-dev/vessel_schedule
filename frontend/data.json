@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T23:06:59.513627Z",
+  "generated_at": "2026-09-12T04:00:33.059136Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 26,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:38.274006",
+      "started_at": "2026-09-12T04:00:12.209918",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 52,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:45.745754",
+      "started_at": "2026-09-12T04:00:19.396613",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 4,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:36.316187",
+      "started_at": "2026-09-12T04:00:10.908773",
       "error_type": null,
       "error_message": null
     },
@@ -35,9 +35,9 @@
       "terminal_code": "MICT",
       "scope": "terminal",
       "status": "success",
-      "rows_found": 41,
-      "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:57.192718",
+      "rows_found": 39,
+      "report_date": "2026-09-12",
+      "started_at": "2026-09-12T04:00:31.235739",
       "error_type": null,
       "error_message": null
     },
@@ -45,9 +45,9 @@
       "terminal_code": "MUNDRA_ADANI",
       "scope": "terminal",
       "status": "success",
-      "rows_found": 109,
-      "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:51.840012",
+      "rows_found": 113,
+      "report_date": "2026-09-12",
+      "started_at": "2026-09-12T04:00:24.797198",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 30,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:48.765825",
+      "started_at": "2026-09-12T04:00:22.470236",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 37,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:40.880637",
+      "started_at": "2026-09-12T04:00:14.614860",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 15,
       "report_date": "2026-09-11",
-      "started_at": "2026-09-11T23:06:43.409383",
+      "started_at": "2026-09-12T04:00:17.079084",
       "error_type": null,
       "error_message": null
     }
@@ -131,27 +131,6 @@
       "terminal_name": "Adani International Container Terminal (MSC JV)",
       "berth_no": null,
       "status": "expected",
-      "vessel_name": "MSC RAVENNA",
-      "via_no": "UX630R",
-      "service": "ADHOC",
-      "shipping_line": "MSC",
-      "agent": "MSC",
-      "loa_m": 365.82,
-      "cargo_commodity": null,
-      "eta": "2026-09-10T08:00:00",
-      "gate_cutoff": "2026-09-11T15:30:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "AICTPL",
-      "terminal_name": "Adani International Container Terminal (MSC JV)",
-      "berth_no": null,
-      "status": "expected",
       "vessel_name": "ZHONG GU LAN ZHOU",
       "via_no": "2608MUN",
       "service": "FIVE",
@@ -164,28 +143,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "AICTPL",
-      "terminal_name": "Adani International Container Terminal (MSC JV)",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "MSC MICOL",
-      "via_no": "QS634R",
-      "service": "SHIKRA",
-      "shipping_line": "MSC",
-      "agent": "MSC",
-      "loa_m": 399.9,
-      "cargo_commodity": null,
-      "eta": "2026-09-10T15:00:00",
-      "gate_cutoff": "2026-09-11T20:30:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -227,28 +185,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "AICTPL",
-      "terminal_name": "Adani International Container Terminal (MSC JV)",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "MSC LUISA",
-      "via_no": "IW628R",
-      "service": "ADHOC",
-      "shipping_line": "MSC",
-      "agent": "MSC",
-      "loa_m": 299.99,
-      "cargo_commodity": null,
-      "eta": "2026-09-11T06:00:00",
-      "gate_cutoff": "2026-09-11T22:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -378,27 +315,6 @@
       "is_sample": false
     },
     {
-      "port_code": "MUNDRA",
-      "terminal_code": "MICT",
-      "terminal_name": "Mundra International Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "DP WORLD INDUS",
-      "via_no": "DPDU005",
-      "service": "ADHOC",
-      "shipping_line": "UNF",
-      "agent": "UNF",
-      "loa_m": 212.6,
-      "cargo_commodity": null,
-      "eta": "2026-09-11T23:00:00",
-      "gate_cutoff": "2026-09-11T17:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
       "port_code": "JNPT",
       "terminal_code": "BMCT",
       "terminal_name": "Bharat Mumbai Container Terminal",
@@ -434,27 +350,6 @@
       "cargo_commodity": null,
       "eta": "2026-09-12T02:00:00",
       "gate_cutoff": "2026-09-11T20:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "MICT",
-      "terminal_name": "Mundra International Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "SOUL OF KOLKATA",
-      "via_no": "SKOL2615W",
-      "service": "MIX",
-      "shipping_line": "MIM",
-      "agent": "MIM",
-      "loa_m": 159.85,
-      "cargo_commodity": null,
-      "eta": "2026-09-12T03:00:00",
-      "gate_cutoff": "2026-09-11T21:00:00",
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
@@ -500,7 +395,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -521,7 +416,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -542,7 +437,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -563,7 +458,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -584,7 +479,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -605,7 +500,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -626,7 +521,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -647,7 +542,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -668,7 +563,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -689,7 +584,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -862,48 +757,6 @@
     },
     {
       "port_code": "MUNDRA",
-      "terminal_code": "MICT",
-      "terminal_name": "Mundra International Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "STONEWELL GLORY",
-      "via_no": "STRY20PCHN",
-      "service": "MIREX",
-      "shipping_line": "HUB",
-      "agent": "HUB",
-      "loa_m": 233.17,
-      "cargo_commodity": null,
-      "eta": "2026-09-13T03:00:00",
-      "gate_cutoff": "2026-09-12T21:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "AICTPL",
-      "terminal_name": "Adani International Container Terminal (MSC JV)",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "SYNERGY OAKLAND",
-      "via_no": "25E",
-      "service": "FIVE",
-      "shipping_line": "GSU",
-      "agent": "GSU",
-      "loa_m": 260.05,
-      "cargo_commodity": null,
-      "eta": "2026-09-13T05:00:00",
-      "gate_cutoff": "2026-09-13T16:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
       "terminal_code": "ACMTPL",
       "terminal_name": "Adani CMA Mundra Container Terminal (CMA CGM JV)",
       "berth_no": null,
@@ -920,7 +773,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -962,7 +815,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -983,7 +836,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1004,7 +857,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1088,7 +941,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1109,7 +962,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1172,7 +1025,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1218,6 +1071,27 @@
       "is_sample": false
     },
     {
+      "port_code": "MUNDRA",
+      "terminal_code": "AICTPL",
+      "terminal_name": "Adani International Container Terminal (MSC JV)",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "SYNERGY OAKLAND",
+      "via_no": "25E",
+      "service": "FIVE",
+      "shipping_line": "GSU",
+      "agent": "GSU",
+      "loa_m": 260.05,
+      "cargo_commodity": null,
+      "eta": "2026-09-13T20:00:00",
+      "gate_cutoff": "2026-09-13T16:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
       "port_code": "JNPT",
       "terminal_code": "NSIGT",
       "terminal_name": "Nhava Sheva India Gateway Terminal",
@@ -1256,7 +1130,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1277,7 +1151,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1298,7 +1172,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1319,7 +1193,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1382,7 +1256,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1403,7 +1277,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1487,7 +1361,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1508,7 +1382,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1576,6 +1450,27 @@
     },
     {
       "port_code": "MUNDRA",
+      "terminal_code": "AICTPL",
+      "terminal_name": "Adani International Container Terminal (MSC JV)",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "MSC ROCHELLE",
+      "via_no": "XE638A",
+      "service": "ADHOC",
+      "shipping_line": "MSC",
+      "agent": "MSC",
+      "loa_m": 294.13,
+      "cargo_commodity": null,
+      "eta": "2026-09-14T18:00:00",
+      "gate_cutoff": "2026-09-14T12:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
       "terminal_code": "MICT",
       "terminal_name": "Mundra International Container Terminal",
       "berth_no": null,
@@ -1592,7 +1487,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1613,7 +1508,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1676,7 +1571,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1697,7 +1592,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1823,7 +1718,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1844,7 +1739,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1865,7 +1760,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1886,7 +1781,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1907,7 +1802,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -1991,7 +1886,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2012,7 +1907,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2033,7 +1928,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2075,7 +1970,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2138,7 +2033,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2185,27 +2080,6 @@
     },
     {
       "port_code": "MUNDRA",
-      "terminal_code": "AMCT",
-      "terminal_name": "Adani Mundra Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "X-PRESS ANGLESEY",
-      "via_no": "'2604E",
-      "service": "HLS",
-      "shipping_line": "XPF",
-      "agent": "XPF",
-      "loa_m": 249.95,
-      "cargo_commodity": null,
-      "eta": "2026-09-16T02:00:00",
-      "gate_cutoff": "2026-09-16T16:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
       "terminal_code": "AICTPL",
       "terminal_name": "Adani International Container Terminal (MSC JV)",
       "berth_no": null,
@@ -2222,7 +2096,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2243,7 +2117,28 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "AMCT",
+      "terminal_name": "Adani Mundra Container Terminal",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "X-PRESS ANGLESEY",
+      "via_no": "'2604E",
+      "service": "HLS",
+      "shipping_line": "XPF",
+      "agent": "XPF",
+      "loa_m": 249.95,
+      "cargo_commodity": null,
+      "eta": "2026-09-16T06:00:00",
+      "gate_cutoff": "2026-09-16T13:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2327,7 +2222,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2348,7 +2243,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2390,7 +2285,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2453,7 +2348,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2474,7 +2369,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2516,7 +2411,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2533,11 +2428,11 @@
       "loa_m": 211.0,
       "cargo_commodity": null,
       "eta": "2026-09-17T05:00:00",
-      "gate_cutoff": "2026-09-17T01:00:00",
+      "gate_cutoff": "2026-09-13T10:00:00",
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2579,7 +2474,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2600,7 +2495,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2642,7 +2537,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2726,7 +2621,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2747,7 +2642,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2768,7 +2663,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2789,7 +2684,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2831,7 +2726,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2852,7 +2747,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2915,7 +2810,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2957,7 +2852,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -2974,11 +2869,11 @@
       "loa_m": 237.8,
       "cargo_commodity": null,
       "eta": "2026-09-18T05:00:00",
-      "gate_cutoff": "2026-09-18T13:00:00",
+      "gate_cutoff": "2026-09-17T23:00:00",
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3062,7 +2957,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3083,7 +2978,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3209,7 +3104,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3230,7 +3125,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3335,7 +3230,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3419,7 +3314,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3503,7 +3398,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3545,7 +3440,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3608,7 +3503,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3629,7 +3524,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3655,6 +3550,27 @@
     },
     {
       "port_code": "MUNDRA",
+      "terminal_code": "AICTPL",
+      "terminal_name": "Adani International Container Terminal (MSC JV)",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "MSC LUISA",
+      "via_no": "IW637A",
+      "service": "IAS",
+      "shipping_line": "MSC",
+      "agent": "MSC",
+      "loa_m": 299.99,
+      "cargo_commodity": null,
+      "eta": "2026-09-19T12:00:00",
+      "gate_cutoff": "2026-09-19T06:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
       "terminal_code": "T2",
       "terminal_name": "Adani Mundra Terminal 2",
       "berth_no": null,
@@ -3671,7 +3587,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3692,7 +3608,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3713,7 +3629,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3781,6 +3697,27 @@
     },
     {
       "port_code": "MUNDRA",
+      "terminal_code": "T2",
+      "terminal_name": "Adani Mundra Terminal 2",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "FU HAI SHENG",
+      "via_no": "2601",
+      "service": "ISX",
+      "shipping_line": "DMA",
+      "agent": "DMA",
+      "loa_m": 140.8,
+      "cargo_commodity": null,
+      "eta": "2026-09-19T20:00:00",
+      "gate_cutoff": "2026-09-19T14:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
       "terminal_code": "MICT",
       "terminal_name": "Mundra International Container Terminal",
       "berth_no": null,
@@ -3797,7 +3734,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3818,7 +3755,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3860,7 +3797,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3902,7 +3839,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -3944,7 +3881,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4028,7 +3965,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4049,7 +3986,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4075,27 +4012,6 @@
     },
     {
       "port_code": "MUNDRA",
-      "terminal_code": "AMCT",
-      "terminal_name": "Adani Mundra Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "GFS GISELLE",
-      "via_no": "''042",
-      "service": "ASX GULF",
-      "shipping_line": "XPF",
-      "agent": "XPF",
-      "loa_m": 239.9,
-      "cargo_commodity": null,
-      "eta": "2026-09-20T18:00:00",
-      "gate_cutoff": "2026-09-20T12:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
       "terminal_code": "T2",
       "terminal_name": "Adani Mundra Terminal 2",
       "berth_no": null,
@@ -4112,7 +4028,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4133,7 +4049,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4154,7 +4070,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4238,7 +4154,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4289,6 +4205,27 @@
       "terminal_name": "Adani International Container Terminal (MSC JV)",
       "berth_no": null,
       "status": "expected",
+      "vessel_name": "MSC MUNDRA VIII",
+      "via_no": "IV639A",
+      "service": "INDUSA",
+      "shipping_line": "MSC",
+      "agent": "MSC",
+      "loa_m": 332.41,
+      "cargo_commodity": null,
+      "eta": "2026-09-21T03:00:00",
+      "gate_cutoff": "2026-09-20T21:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "AICTPL",
+      "terminal_name": "Adani International Container Terminal (MSC JV)",
+      "berth_no": null,
+      "status": "expected",
       "vessel_name": "MSC SILVER II",
       "via_no": "IB638A",
       "service": "ILANGA",
@@ -4301,7 +4238,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4348,6 +4285,27 @@
     },
     {
       "port_code": "MUNDRA",
+      "terminal_code": "AMCT",
+      "terminal_name": "Adani Mundra Container Terminal",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "GFS GISELLE",
+      "via_no": "''042",
+      "service": "ASX GULF",
+      "shipping_line": "XPF",
+      "agent": "XPF",
+      "loa_m": 239.9,
+      "cargo_commodity": null,
+      "eta": "2026-09-21T09:00:00",
+      "gate_cutoff": "2026-09-21T03:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
       "terminal_code": "AICTPL",
       "terminal_name": "Adani International Container Terminal (MSC JV)",
       "berth_no": null,
@@ -4364,7 +4322,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4385,7 +4343,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4469,7 +4427,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4490,7 +4448,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4511,7 +4469,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4532,7 +4490,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4553,7 +4511,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4616,7 +4574,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4637,7 +4595,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4658,7 +4616,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4700,7 +4658,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4721,7 +4679,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4742,7 +4700,28 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "AICTPL",
+      "terminal_name": "Adani International Container Terminal (MSC JV)",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "MSC LORETO",
+      "via_no": "QS636R",
+      "service": "SHIKRA",
+      "shipping_line": "MSC",
+      "agent": "MSC",
+      "loa_m": 399.9,
+      "cargo_commodity": null,
+      "eta": "2026-09-23T01:00:00",
+      "gate_cutoff": "2026-09-22T19:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4763,7 +4742,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4805,7 +4784,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4847,7 +4826,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4857,7 +4836,7 @@
       "berth_no": null,
       "status": "expected",
       "vessel_name": "HE RUN XIANG MAO",
-      "via_no": "BG2000W19",
+      "via_no": "BGX160W19",
       "service": "BIGEX",
       "shipping_line": "CMA",
       "agent": "CMA",
@@ -4868,7 +4847,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4889,7 +4868,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4910,7 +4889,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -4973,7 +4952,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5015,7 +4994,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5087,27 +5066,6 @@
       "terminal_name": "Adani Mundra Terminal 2",
       "berth_no": null,
       "status": "expected",
-      "vessel_name": "KMTC MOMBASA",
-      "via_no": "2605E",
-      "service": "CWX",
-      "shipping_line": "KMT",
-      "agent": "KMT",
-      "loa_m": 272.0,
-      "cargo_commodity": null,
-      "eta": "2026-09-24T18:00:00",
-      "gate_cutoff": "2026-09-24T12:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "T2",
-      "terminal_name": "Adani Mundra Terminal 2",
-      "berth_no": null,
-      "status": "expected",
       "vessel_name": "EVER LIFTING",
       "via_no": "065E",
       "service": "CWX",
@@ -5120,7 +5078,28 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "T2",
+      "terminal_name": "Adani Mundra Terminal 2",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "KMTC MOMBASA",
+      "via_no": "2605E",
+      "service": "CWX",
+      "shipping_line": "KMT",
+      "agent": "KMT",
+      "loa_m": 272.0,
+      "cargo_commodity": null,
+      "eta": "2026-09-24T18:00:00",
+      "gate_cutoff": "2026-09-24T12:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5141,7 +5120,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5163,6 +5142,27 @@
       "expected_completion": null,
       "sailed_on": null,
       "report_date": "2026-09-11",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "ACMTPL",
+      "terminal_name": "Adani CMA Mundra Container Terminal (CMA CGM JV)",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "CNC TIGER",
+      "via_no": "BG2560W19",
+      "service": "BIGEX2",
+      "shipping_line": "CMA",
+      "agent": "CMA",
+      "loa_m": 186.0,
+      "cargo_commodity": null,
+      "eta": "2026-09-25T03:00:00",
+      "gate_cutoff": "2026-09-24T18:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5204,7 +5204,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5288,7 +5288,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5309,7 +5309,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5356,6 +5356,27 @@
     },
     {
       "port_code": "MUNDRA",
+      "terminal_code": "AMCT",
+      "terminal_name": "Adani Mundra Container Terminal",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "EVER ETHIC",
+      "via_no": "185E",
+      "service": "AGI",
+      "shipping_line": "EMC",
+      "agent": "EMC",
+      "loa_m": 299.99,
+      "cargo_commodity": null,
+      "eta": "2026-09-26T15:00:00",
+      "gate_cutoff": "2026-09-26T09:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
       "terminal_code": "T2",
       "terminal_name": "Adani Mundra Terminal 2",
       "berth_no": null,
@@ -5372,7 +5393,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5393,28 +5414,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
-      "terminal_code": "AMCT",
-      "terminal_name": "Adani Mundra Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "EVER ETHIC",
-      "via_no": "185E",
-      "service": "AGI",
-      "shipping_line": "EMC",
-      "agent": "EMC",
-      "loa_m": 299.99,
-      "cargo_commodity": null,
-      "eta": "2026-09-26T20:00:00",
-      "gate_cutoff": "2026-09-26T14:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5435,7 +5435,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5456,7 +5456,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5498,7 +5498,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5519,7 +5519,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5540,7 +5540,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5603,7 +5603,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5624,7 +5624,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5645,7 +5645,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5687,7 +5687,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5708,7 +5708,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5729,7 +5729,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5750,7 +5750,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5792,7 +5792,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5834,7 +5834,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5855,7 +5855,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5918,7 +5918,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5939,7 +5939,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5960,7 +5960,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -5981,7 +5981,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -6002,7 +6002,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -6044,7 +6044,49 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-11",
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "AMCT",
+      "terminal_name": "Adani Mundra Container Terminal",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "WAN HAI 611",
+      "via_no": "085E",
+      "service": "PMX",
+      "shipping_line": "WHL",
+      "agent": "WHL",
+      "loa_m": 284.71,
+      "cargo_commodity": null,
+      "eta": "2026-10-04T08:00:00",
+      "gate_cutoff": "2026-10-02T23:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "AMCT",
+      "terminal_name": "Adani Mundra Container Terminal",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "BALTIMORE EXPRESS",
+      "via_no": "641W",
+      "service": "ME04",
+      "shipping_line": "HLL",
+      "agent": "HLL",
+      "loa_m": 368.48,
+      "cargo_commodity": null,
+      "eta": "2026-10-04T15:00:00",
+      "gate_cutoff": "2026-10-03T05:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
       "is_sample": false
     },
     {
@@ -6319,6 +6361,27 @@
       "sailed_on": null,
       "report_date": "2026-09-11",
       "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "MICT",
+      "terminal_name": "Mundra International Container Terminal",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "STONEWELL GLORY",
+      "via_no": "STRY20PCHN",
+      "service": "MIREX",
+      "shipping_line": "HUB",
+      "agent": "HUB",
+      "loa_m": 233.17,
+      "cargo_commodity": null,
+      "eta": null,
+      "gate_cutoff": null,
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-12",
+      "is_sample": false
     }
   ],
   "berthed_vessels": [
@@ -6447,10 +6510,10 @@
       "terminal_code": "MICT",
       "terminal_name": "Mundra International Container Terminal",
       "berth_no": null,
-      "vessel_name": "HONSIN",
-      "via_no": "HONS69IN",
-      "service": "MIREX",
-      "shipping_line": "HUB",
+      "vessel_name": "SOUL OF KOLKATA",
+      "via_no": "SKOL2615W",
+      "service": "MIX",
+      "shipping_line": "MIM",
       "loa_m": null,
       "draft_m": null,
       "side": null,
@@ -6460,7 +6523,7 @@
       "next_event_at": null,
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-11"
+      "report_date": "2026-09-12"
     },
     {
       "port_code": "JNPT",
