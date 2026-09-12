@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-12T15:19:48.538361Z",
+  "generated_at": "2026-09-12T20:23:36.084531Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 26,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:23.850862",
+      "started_at": "2026-09-12T20:23:11.653306",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 46,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:31.851680",
+      "started_at": "2026-09-12T20:23:18.972638",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 14,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:46.683451",
+      "started_at": "2026-09-12T20:23:34.399512",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 12,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:45.992524",
+      "started_at": "2026-09-12T20:23:33.745335",
       "error_type": null,
       "error_message": null
     },
@@ -45,9 +45,9 @@
       "terminal_code": "IGTPL",
       "scope": "terminal",
       "status": "success",
-      "rows_found": 17,
-      "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:44.387856",
+      "rows_found": 18,
+      "report_date": "2026-09-13",
+      "started_at": "2026-09-12T20:23:32.196919",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 6,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:22.591506",
+      "started_at": "2026-09-12T20:23:10.111165",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 38,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:42.343771",
+      "started_at": "2026-09-12T20:23:29.823469",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 111,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:38.354159",
+      "started_at": "2026-09-12T20:23:26.425224",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 29,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:35.493921",
+      "started_at": "2026-09-12T20:23:23.486546",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 36,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:26.745715",
+      "started_at": "2026-09-12T20:23:14.183021",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 15,
       "report_date": "2026-09-12",
-      "started_at": "2026-09-12T15:19:29.308080",
+      "started_at": "2026-09-12T20:23:16.748855",
       "error_type": null,
       "error_message": null
     }
@@ -698,7 +698,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -740,7 +740,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -1496,7 +1496,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -1727,7 +1727,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -2000,7 +2000,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -2294,7 +2294,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -2357,7 +2357,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -2966,7 +2966,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -3029,7 +3029,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -3470,7 +3470,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -3554,7 +3554,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -3571,11 +3571,11 @@
       "loa_m": null,
       "cargo_commodity": null,
       "eta": "2026-09-18T23:30:00",
-      "gate_cutoff": "2026-09-07T19:00:00",
+      "gate_cutoff": "2026-09-17T10:00:00",
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -4289,7 +4289,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -4331,7 +4331,28 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
+      "is_sample": false
+    },
+    {
+      "port_code": "COCHIN",
+      "terminal_code": "IGTPL",
+      "terminal_name": "India Gateway Terminal Pvt Ltd (Vallarpadam)",
+      "berth_no": null,
+      "status": "expected",
+      "vessel_name": "SCI MUMBAI",
+      "via_no": "2613",
+      "service": null,
+      "shipping_line": "SCI",
+      "agent": "SCI",
+      "loa_m": null,
+      "cargo_commodity": null,
+      "eta": "2026-09-20T11:30:00",
+      "gate_cutoff": "2026-09-20T07:30:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -5234,7 +5255,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-12",
+      "report_date": "2026-09-13",
       "is_sample": false
     },
     {
@@ -7179,7 +7200,7 @@
       "next_event_at": "2026-09-13T13:00:00",
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-12"
+      "report_date": "2026-09-13"
     },
     {
       "port_code": "COCHIN",
@@ -7199,7 +7220,7 @@
       "next_event_at": "2026-09-13T06:00:00",
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-12"
+      "report_date": "2026-09-13"
     },
     {
       "port_code": "MUNDRA",
