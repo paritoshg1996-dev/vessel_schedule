@@ -105,6 +105,34 @@ TERMINALS = [
          operator="DP World", cargo_type="container", source_type="pdf",
          source_url="https://www.dpworld.com/api/contenthub/get-assets",
          is_container_terminal=True),
+
+    # --- Cochin Port -----------------------------------------------------
+    # A single container terminal, and the simplest source in this whole
+    # package: an ordinary server-rendered HTML page, not a PDF -- see
+    # scrapers/cochin_igtpl.py.
+    dict(port_code="COCHIN", port_name="Cochin Port (Kochi)",
+         terminal_code="IGTPL", terminal_name="India Gateway Terminal Pvt Ltd (Vallarpadam)",
+         operator="DP World", cargo_type="container", source_type="html",
+         source_url="https://igtpl.com/php/vessel-schedules.php",
+         is_container_terminal=True),
+
+    # --- Chennai Port ------------------------------------------------------
+    # Two independently-operated terminals, two independently-fetched PDFs
+    # (no port-wide master page here either): Global PSA's CIT, discovered
+    # via a tiny <embed>-stub page that just points at today's PDF (see
+    # scrapers/chennai_psa.py); DP World's CCT, discovered the same
+    # content-hub way as MICT (see scrapers/chennai_dpworld.py).
+    dict(port_code="CHENNAI", port_name="Chennai Port",
+         terminal_code="CIT", terminal_name="Chennai International Terminal Pvt Ltd (Global PSA)",
+         operator="PSA International", cargo_type="container", source_type="pdf",
+         source_url="https://india.globalpsa.com/vessel-schedule/vessel-schedule-chennai/",
+         is_container_terminal=True),
+
+    dict(port_code="CHENNAI", port_name="Chennai Port",
+         terminal_code="CCT", terminal_name="Chennai Container Terminal",
+         operator="DP World", cargo_type="container", source_type="pdf",
+         source_url="https://www.dpworld.com/api/contenthub/get-assets",
+         is_container_terminal=True),
 ]
 
 CONTAINER_TERMINAL_CODES = [t["terminal_code"] for t in TERMINALS if t["is_container_terminal"]]

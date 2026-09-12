@@ -6,6 +6,9 @@ from scrapers.bmct import BmctScraper
 from scrapers.nsft import NsftScraper
 from scrapers.mundra_adani import AdaniMundraScraper
 from scrapers.mict import MictScraper
+from scrapers.cochin_igtpl import CochinIgtplScraper
+from scrapers.chennai_psa import ChennaiPsaScraper
+from scrapers.chennai_dpworld import ChennaiDpWorldScraper
 
 SCRAPER_CLASSES = {
     "JNPT_MASTER": JnpaMasterScraper,
@@ -25,4 +28,10 @@ SCRAPER_CLASSES = {
     # its own single fetch.
     "MUNDRA_ADANI": AdaniMundraScraper,
     "MICT": MictScraper,
+
+    # Cochin Port (one terminal) and Chennai Port (two independently
+    # fetched terminals, no port-wide master page).
+    "IGTPL": CochinIgtplScraper,
+    "CIT": ChennaiPsaScraper,
+    "CCT": ChennaiDpWorldScraper,
 }
