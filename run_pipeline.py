@@ -58,11 +58,41 @@ def run_one_scraper(session, terminal_code: str, scope: str, scraper) -> Ingesti
         result = scraper.run()
         run.report_date = result.report_date
         run.rows_found = len(result.rows)
-        run.status = "success"
+        # A scraper that found real rows but couldn't pin down what date
+        # they belong to isn't a clean success -- every row below needs a
+        # report_date (it's part of vessel_schedule's own dedup key, and
+        # the column is NOT NULL), so the `if result.report_date:` guard
+        # below would otherwise silently discard every one of those rows
+        # while this run still reports "success" with a real rows_found
+        # count. CAUGHT LIVE 2026-09-13: Adani dropped the "Vessel
+        # Schedule Report DD-MM-YY HH:MM" title line its report-date
+        # parser anchored on (a genuine source layout change, mid-way
+        # through otherwise-unaffected data -- 110 real rows extracted,
+        # zero written) with no error surfaced anywhere until someone
+        # noticed the site itself hadn't visibly updated. Treat it the
+        # same way a ParseError from the extraction engine already is:
+        # a real failure worth alerting on, not a quiet no-op.
+        missing_report_date = bool(result.rows) and not result.report_date
+        run.status = "failed" if missing_report_date else "success"
         run.finished_at = now_utc()
         session.commit()
 
+        # Staged regardless of the check below -- staging_raw has no
+        # report_date column and no NOT NULL constraint to violate, and
+        # keeping the near-verbatim rows around is exactly what makes a
+        # "why didn't this get written" question like this one answerable
+        # later instead of just a gap in the data with no trace of why.
         stage_scrape_result(session, run.id, terminal_code, result)
+
+        if missing_report_date:
+            run.error_type = "schema_drift"
+            run.error_message = (
+                f"{len(result.rows)} rows extracted but no report_date could be "
+                f"determined -- source layout may have changed (see the scraper's "
+                f"own report-date parser)."
+            )
+            session.commit()
+            return run, None
 
         port_code = next((t["port_code"] for t in TERMINALS if t["terminal_code"] == terminal_code), "JNPT")
         if result.report_date:

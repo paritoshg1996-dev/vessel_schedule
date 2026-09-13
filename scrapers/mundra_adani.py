@@ -119,18 +119,44 @@ def _to_float(s: str):
 
 
 def _parse_report_date(words: list[dict]) -> Optional[date]:
-    # "Adani Ports & SEZ Ltd - Vessel Schedule Report 11-09-26 18:10" --
-    # a title line, not a "label: value" pair, and the date sits far
-    # enough right of the label text that extract_label_value's default
-    # max_x_gap (220) doesn't bridge it.
-    raw = extract_label_value(words, "Vessel Schedule Report", max_x_gap=320)
-    if not raw:
-        return None
     from dateutil import parser as dateutil_parser
-    try:
-        return dateutil_parser.parse(raw, dayfirst=True, fuzzy=True).date()
-    except (ValueError, OverflowError):
-        return None
+
+    # Primary: "Adani Ports & SEZ Ltd - Vessel Schedule Report 11-09-26
+    # 18:10" -- a title line, not a "label: value" pair, and the date
+    # sits far enough right of the label text that extract_label_value's
+    # default max_x_gap (220) doesn't bridge it.
+    raw = extract_label_value(words, "Vessel Schedule Report", max_x_gap=320)
+    if raw:
+        try:
+            return dateutil_parser.parse(raw, dayfirst=True, fuzzy=True).date()
+        except (ValueError, OverflowError):
+            pass
+
+    # CAUGHT LIVE 2026-09-13: Adani dropped that title line entirely (a
+    # genuine template change, not a one-off glitch -- the page now
+    # starts directly at "TIDE TABLE"). The TIDE TABLE panel itself is
+    # badly garbled (multiple tide entries' text overlapping at the same
+    # position, the same corruption class already documented for
+    # "VESSELS ON BERTH"), but a "DD-MM-YY HH:MM" pair -- almost
+    # certainly the report's own generation timestamp -- survives intact
+    # as two adjacent, non-overlapping words at the far right of that
+    # panel's first row. Fall back to finding that pair directly, since
+    # it's the only remaining date anchor left anywhere on the page.
+    date_words = [w for w in words if re.match(r"^\d{2}-\d{2}-\d{2}$", w["text"])]
+    for dw in date_words:
+        same_line = sorted(
+            [w for w in words if abs(w["top"] - dw["top"]) <= 2 and w["x0"] > dw["x0"]],
+            key=lambda w: w["x0"],
+        )
+        if same_line and re.match(r"^\d{2}:\d{2}$", same_line[0]["text"]):
+            try:
+                return dateutil_parser.parse(
+                    f"{dw['text']} {same_line[0]['text']}", dayfirst=True
+                ).date()
+            except (ValueError, OverflowError):
+                continue
+
+    return None
 
 
 class AdaniMundraScraper(PdfTerminalScraper):
