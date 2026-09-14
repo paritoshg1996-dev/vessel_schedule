@@ -224,7 +224,17 @@ class ServiceRotation(Base):
     # starting at JNPT. [] if confidence is "no_fixed_rotation" or "unresolved".
     ports = Column(JSON, nullable=False, default=list)
     jnpt_index = Column(Integer)  # `ports` index that is JNPT/Nhava Sheva, or NULL if
-                                  # not found in the published rotation (e.g. "unresolved")
+                                  # not found in the published rotation (e.g. "unresolved").
+                                  # Kept as a JNPT-specific convenience field (matches this
+                                  # column's original JNPT-only design) -- but pipeline/
+                                  # rotations.py does NOT use it to find "next ports" for
+                                  # Mundra/Cochin/Chennai rows; it computes the right port's
+                                  # index dynamically via pipeline.ports.find_port_index,
+                                  # since a single stored index can't be correct for a
+                                  # rotation that touches more than one of our 4 ports (see
+                                  # that module's docstring). Don't add jnpt_index lookups to
+                                  # new code outside seed_service_rotations.py's own display
+                                  # logging -- use find_port_index(ports, home_port_code).
     confidence = Column(String(24), nullable=False)
     # "verified"           -- matched against the carrier's own published schedule
     # "needs_verification" -- found via web search, not cross-checked against a

@@ -20,8 +20,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from models import ServiceRotation, get_engine, get_session, init_db, now_utc
-
-JNPT_ALIASES = {"nhava sheva", "jnpt", "jawaharlal nehru port", "jawaharlal nehru"}
+from pipeline.ports import find_port_index
 
 # Carrier names decoded from the abbreviation vessel_schedule.shipping_line
 # actually holds. Primary source: JNPA's own official "List of Shipping
@@ -87,13 +86,6 @@ CARRIER_NAMES = {
 }
 
 
-def _find_jnpt_index(ports: list[dict]) -> "int | None":
-    for i, p in enumerate(ports):
-        if p.get("port", "").strip().lower() in JNPT_ALIASES:
-            return i
-    return None
-
-
 def _upsert(session, shipping_line: str, service: str, direction: str, ports: list[dict],
             confidence: str, source_url: str, notes: str) -> str:
     shipping_line, service = shipping_line.strip().upper(), service.strip().upper()
@@ -105,7 +97,14 @@ def _upsert(session, shipping_line: str, service: str, direction: str, ports: li
     values = dict(
         shipping_line_name=CARRIER_NAMES.get(shipping_line),
         ports=ports,
-        jnpt_index=_find_jnpt_index(ports),
+        # Kept for backward compatibility / a quick "does this touch JNPT
+        # at all" check -- but pipeline/rotations.py no longer relies on
+        # this column for Mundra/Cochin/Chennai rows; it looks up the
+        # right port's index dynamically via pipeline.ports.find_port_index
+        # (see that module's docstring for why one JNPT-only column
+        # couldn't work once a rotation could touch more than one of our
+        # 4 ports).
+        jnpt_index=find_port_index(ports, "JNPT"),
         confidence=confidence,
         source_url=source_url,
         notes=notes,
@@ -152,7 +151,7 @@ def main():
             outcome = _upsert(session, r["shipping_line"], r["service"], r.get("direction", "single"),
                                r["ports"], r["confidence"], r["source_url"], r["notes"])
             counts[outcome] += 1
-            found = "found" if _find_jnpt_index(r["ports"]) is not None else "NOT found"
+            found = "found" if find_port_index(r["ports"], "JNPT") is not None else "NOT found"
             print(f"[{outcome}] {r['shipping_line']}/{r['service']}/{r.get('direction','single')}: "
                   f"confidence={r['confidence']}, JNPT {found}")
         for line in getattr(mod, "ADHOC_LINES", []):
