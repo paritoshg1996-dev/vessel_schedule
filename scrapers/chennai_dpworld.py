@@ -117,19 +117,33 @@ def _to_float(s: str):
 
 
 def _parse_report_date(words: list[dict]) -> Optional[date]:
-    """Prints as a bare "12/9/2026" token near the top of the page --
-    no label at all, so scan the whole page for the shape directly
-    rather than anchoring off adjacent text or a fixed y-position
-    (confirmed unique on this report; nothing else on the page uses a
-    plain D/D/YYYY shape)."""
+    """Prints as a bare date token near the top of the page, no label at
+    all -- so scan the whole page for the shape directly rather than
+    anchoring off adjacent text or a fixed y-position. CAUGHT LIVE
+    2026-09-14: this token's own format isn't stable -- it read
+    "12/9/2026" (D/D/YYYY, slashes, 4-digit year) when this scraper was
+    first built, then silently became "14-09-26" (DD-MM-YY, dashes,
+    2-digit year) a day later with no other change to the report at all.
+    Tries both shapes rather than just swapping one regex for the other,
+    since there's no reason to assume it won't flip back. Neither shape
+    collides with anything else on this page: the ARRIVED/BERTHED
+    timestamps spell the month ("14-Sep-26"), and EGM/IGM references use
+    a bare-digit "NNNNNNN-DD/MM" shape that doesn't match either pattern
+    end-to-end."""
     for w in words:
-        m = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", w["text"].strip())
+        text = w["text"].strip()
+        m = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", text)  # D/D/YYYY
         if m:
             d, mo, y = (int(x) for x in m.groups())
-            try:
-                return date(y, mo, d)
-            except ValueError:
+        else:
+            m = re.match(r"^(\d{1,2})-(\d{1,2})-(\d{2})$", text)  # DD-MM-YY
+            if not m:
                 continue
+            d, mo, y = int(m.group(1)), int(m.group(2)), 2000 + int(m.group(3))
+        try:
+            return date(y, mo, d)
+        except ValueError:
+            continue
     return None
 
 

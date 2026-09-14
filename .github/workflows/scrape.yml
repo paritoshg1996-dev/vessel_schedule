@@ -2,10 +2,20 @@ name: Scrape JNPT vessel schedule
 
 on:
   schedule:
-    # Every 3 hours. JNPT publishes daily, but terminals sometimes update
-    # mid-day and this is also how often the staleness/failure alerts get
-    # a chance to fire and clear. Tune to taste.
-    - cron: '0 */3 * * *'
+    # Hourly, at :13 past rather than on the hour. Two real, observed
+    # problems this addresses (see docs/reliability_notes.md for the
+    # full write-up):
+    #  1. GitHub's own docs warn that scheduled workflows are delayed
+    #     during high load, and name "the start of every hour" as the
+    #     worst time to be queued at -- our old '0 */3 * * *' fired
+    #     exactly there every time. Real gaps observed on this repo hit
+    #     5+ hours against a nominal 3.
+    #  2. Sources (JNPT especially) publish their daily report at an
+    #     inconsistent time (observed ~12:30-13:00 IST one day, still
+    #     not published by 09:45 IST the next) -- checking hourly means
+    #     however late a source runs, we're never more than an hour
+    #     behind it noticing, instead of up to 3.
+    - cron: '13 * * * *'
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 permissions:
