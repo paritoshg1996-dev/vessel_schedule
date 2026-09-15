@@ -2,20 +2,36 @@ name: Scrape JNPT vessel schedule
 
 on:
   schedule:
-    # Hourly, at :13 past rather than on the hour. Two real, observed
-    # problems this addresses (see docs/reliability_notes.md for the
-    # full write-up):
-    #  1. GitHub's own docs warn that scheduled workflows are delayed
-    #     during high load, and name "the start of every hour" as the
-    #     worst time to be queued at -- our old '0 */3 * * *' fired
-    #     exactly there every time. Real gaps observed on this repo hit
-    #     5+ hours against a nominal 3.
-    #  2. Sources (JNPT especially) publish their daily report at an
-    #     inconsistent time (observed ~12:30-13:00 IST one day, still
-    #     not published by 09:45 IST the next) -- checking hourly means
-    #     however late a source runs, we're never more than an hour
-    #     behind it noticing, instead of up to 3.
-    - cron: '13 * * * *'
+    # Fixed 4x/day: 2am, 6am, noon, 6pm IST (a deliberate choice -- see
+    # docs/reliability_notes.md for the full write-up, superseding the
+    # hourly attempt this repo tried first). GitHub Actions cron always
+    # runs in UTC with no timezone conversion, and IST is UTC+5:30, so
+    # each of those 4 IST clock times is :30-past-the-hour in UTC:
+    #   02:00 IST -> 20:30 UTC (previous day)
+    #   06:00 IST -> 00:30 UTC
+    #   12:00 IST -> 06:30 UTC
+    #   18:00 IST -> 12:30 UTC
+    # A side benefit of IST's own 5:30 offset: every one of these lands
+    # on a UTC half-hour, never the top of a UTC hour -- the single
+    # worst time to be queued, per GitHub's own docs -- for free.
+    #
+    # IMPORTANT caveat, confirmed by directly pulling this repo's own
+    # run history (2026-09-15): moving to hourly did NOT, by itself, fix
+    # real-world staleness. GitHub's `schedule:` trigger is best-effort
+    # and can silently skip a scheduled tick under load with no error,
+    # no retry, and no record that anything was supposed to run --
+    # observed gaps between actual runs stayed multi-hour (2.95h-8.33h)
+    # even AFTER switching to an hourly cron, because most of the hourly
+    # ticks never fired at all. This 4x/day schedule is a deliberate,
+    # explicitly-accepted cadence (not a workaround for that problem) --
+    # but the same silent-skip risk still applies to whichever 4 ticks
+    # are scheduled here. If a fully reliable "definitely ran at this
+    # exact time" guarantee is ever needed, that requires a trigger
+    # outside GitHub's own scheduler entirely (e.g. an external cron
+    # service calling this workflow's `workflow_dispatch` API on its own
+    # clock) -- not implemented, since it needs a repo-scoped GitHub
+    # token held outside this repo. See reliability_notes.md.
+    - cron: '30 0,6,12,20 * * *'
   workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
 
 permissions:
