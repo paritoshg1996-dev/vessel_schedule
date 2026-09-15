@@ -16,12 +16,40 @@ way an incremental mirror eventually would.
 Field names match the REST API built on top of this (GET /api/vessels/
 expected, /berthed, /meta in the container_traffic backend) -- if you
 rename a field here, update that backend's routes to match.
+
+Each exported vessel/berthed doc also carries its computed onward
+rotation (see pipeline/rotations.py):
+
+  "rotation": the full rotation_summary() shape -- {"legs": [...]},
+    one entry per direction on record, each with its own next_ports/
+    confidence/source_url/notes. This is the detailed form, for a UI
+    that wants to show provenance/confidence, not just a filter.
+
+  "next_ports_normalized": a flat, de-duplicated, lowercased list of
+    every port name across every leg (both directions' next_ports
+    merged, when more than one is on record -- the scrape doesn't say
+    which leg a given voyage is on, so a destination search should
+    match either candidate rather than guessing one). This is the
+    field a simple "does this vessel go to X" filter should query
+    against -- see container_traffic backend's /vessels/expected
+    `destination` param. [] whenever there's nothing on record, same
+    "silently incomplete, not wrong" behavior as rotation_summary()
+    itself -- a vessel with no researched rotation just never matches
+    any destination, rather than matching everything or erroring.
+
+Computed once per row at export time (not on every API read) because
+this is the one place that already has both the SQL session (needed to
+query service_rotations) and each row's port_code (needed as
+rotation_summary()'s required `from_port` -- see pipeline/ports.py for
+why that can't just always be "JNPT" anymore).
 """
 from datetime import date, datetime
 
 from pymongo import MongoClient
 
 from models import BerthedVessel, IngestionRun, VesselSchedule
+from pipeline.ports import normalize_port_name
+from pipeline.rotations import rotation_summary
 
 
 def _jsonable(value):
@@ -35,7 +63,20 @@ def _jsonable(value):
     return value
 
 
-def _vessel_schedule_doc(v: VesselSchedule) -> dict:
+def _rotation_fields(session, shipping_line: str, service: str, from_port: str) -> dict:
+    """The two rotation-derived fields described in this module's own
+    docstring, computed once here so both doc-builders below share the
+    exact same logic."""
+    summary = rotation_summary(session, shipping_line, service, from_port)
+    normalized = set()
+    for leg in summary["legs"]:
+        for p in leg["next_ports"]:
+            normalized.add(normalize_port_name(p.get("port")))
+    normalized.discard("")
+    return {"rotation": summary, "next_ports_normalized": sorted(normalized)}
+
+
+def _vessel_schedule_doc(session, v: VesselSchedule) -> dict:
     return {
         "port_code": v.port_code,
         "terminal_code": v.terminal_code,
@@ -55,10 +96,11 @@ def _vessel_schedule_doc(v: VesselSchedule) -> dict:
         "sailed_on": _jsonable(v.sailed_on),
         "report_date": _jsonable(v.report_date),
         "is_sample": v.is_sample,
+        **_rotation_fields(session, v.shipping_line, v.service, v.port_code),
     }
 
 
-def _berthed_vessel_doc(b: BerthedVessel) -> dict:
+def _berthed_vessel_doc(session, b: BerthedVessel) -> dict:
     return {
         "port_code": b.port_code,
         "terminal_code": b.terminal_code,
@@ -77,6 +119,7 @@ def _berthed_vessel_doc(b: BerthedVessel) -> dict:
         "import_moves": b.import_moves,
         "export_moves": b.export_moves,
         "report_date": _jsonable(b.report_date),
+        **_rotation_fields(session, b.shipping_line, b.service, b.port_code),
     }
 
 
@@ -90,8 +133,8 @@ def export_to_mongo(session, mongo_url: str, db_name: str, terminals_meta: dict)
     try:
         db = client[db_name]
 
-        schedule_docs = [_vessel_schedule_doc(v) for v in session.query(VesselSchedule).all()]
-        berthed_docs = [_berthed_vessel_doc(b) for b in session.query(BerthedVessel).all()]
+        schedule_docs = [_vessel_schedule_doc(session, v) for v in session.query(VesselSchedule).all()]
+        berthed_docs = [_berthed_vessel_doc(session, b) for b in session.query(BerthedVessel).all()]
 
         db.vessel_schedule.delete_many({})
         if schedule_docs:
