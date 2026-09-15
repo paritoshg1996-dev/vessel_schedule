@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T18:08:56.788616Z",
+  "generated_at": "2026-09-15T21:16:35.543432Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 25,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:33.204997",
+      "started_at": "2026-09-15T21:16:13.697694",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 48,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:39.737549",
+      "started_at": "2026-09-15T21:16:20.695293",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 13,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:53.783065",
+      "started_at": "2026-09-15T21:16:33.898928",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 9,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:53.216003",
+      "started_at": "2026-09-15T21:16:33.111954",
       "error_type": null,
       "error_message": null
     },
@@ -46,8 +46,8 @@
       "scope": "terminal",
       "status": "success",
       "rows_found": 16,
-      "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:51.335429",
+      "report_date": "2026-09-16",
+      "started_at": "2026-09-15T21:16:31.691859",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 5,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:31.874924",
+      "started_at": "2026-09-15T21:16:12.134790",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 39,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:48.346722",
+      "started_at": "2026-09-15T21:16:29.155661",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 106,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:45.097439",
+      "started_at": "2026-09-15T21:16:25.574754",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 24,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:42.572334",
+      "started_at": "2026-09-15T21:16:23.515089",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 33,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:35.225948",
+      "started_at": "2026-09-15T21:16:16.111116",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 14,
       "report_date": "2026-09-15",
-      "started_at": "2026-09-15T18:08:37.492630",
+      "started_at": "2026-09-15T21:16:18.333875",
       "error_type": null,
       "error_message": null
     }
@@ -887,7 +887,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -1370,7 +1370,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -1496,7 +1496,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -2336,7 +2336,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -2630,7 +2630,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -3071,7 +3071,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -3113,7 +3113,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -3197,7 +3197,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -3218,7 +3218,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -3323,7 +3323,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -3617,7 +3617,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -4121,7 +4121,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -4226,7 +4226,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -5066,7 +5066,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-15",
+      "report_date": "2026-09-16",
       "is_sample": false
     },
     {
@@ -6825,7 +6825,7 @@
       "next_event_at": "2026-09-16T10:00:00",
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-15"
+      "report_date": "2026-09-16"
     },
     {
       "port_code": "COCHIN",
@@ -6845,7 +6845,7 @@
       "next_event_at": "2026-09-16T08:00:00",
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-15"
+      "report_date": "2026-09-16"
     },
     {
       "port_code": "MUNDRA",
