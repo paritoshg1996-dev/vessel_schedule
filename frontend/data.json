@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T11:25:44.365778Z",
+  "generated_at": "2026-09-16T12:09:36.301871Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 24,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:20.018089",
+      "started_at": "2026-09-16T12:09:10.503014",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 40,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:29.103830",
+      "started_at": "2026-09-16T12:09:18.394630",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 15,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:42.530071",
+      "started_at": "2026-09-16T12:09:34.619397",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 9,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:41.913520",
+      "started_at": "2026-09-16T12:09:33.925714",
       "error_type": null,
       "error_message": null
     },
@@ -45,9 +45,9 @@
       "terminal_code": "IGTPL",
       "scope": "terminal",
       "status": "success",
-      "rows_found": 15,
+      "rows_found": 14,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:40.457381",
+      "started_at": "2026-09-16T12:09:32.029831",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 7,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:18.362014",
+      "started_at": "2026-09-16T12:09:08.382828",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 41,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:38.474645",
+      "started_at": "2026-09-16T12:09:29.835782",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 106,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:34.286173",
+      "started_at": "2026-09-16T12:09:25.603689",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 28,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:31.645366",
+      "started_at": "2026-09-16T12:09:23.382996",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 33,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:22.738588",
+      "started_at": "2026-09-16T12:09:13.076830",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 17,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T11:25:25.554551",
+      "started_at": "2026-09-16T12:09:15.528396",
       "error_type": null,
       "error_message": null
     }
@@ -6805,26 +6805,6 @@
       "next_event_at": "2026-09-16T16:00:00",
       "import_moves": 503,
       "export_moves": 550,
-      "report_date": "2026-09-16"
-    },
-    {
-      "port_code": "COCHIN",
-      "terminal_code": "IGTPL",
-      "terminal_name": "India Gateway Terminal Pvt Ltd (Vallarpadam)",
-      "berth_no": null,
-      "vessel_name": "MSC JAMBOREE IX",
-      "via_no": "GU632E",
-      "service": null,
-      "shipping_line": "MSC",
-      "loa_m": null,
-      "draft_m": null,
-      "side": null,
-      "alongside_at": "2026-09-15T08:25:00",
-      "ops_commenced_at": null,
-      "ops_completed_at": null,
-      "next_event_at": "2026-09-16T08:00:00",
-      "import_moves": null,
-      "export_moves": null,
       "report_date": "2026-09-16"
     },
     {
