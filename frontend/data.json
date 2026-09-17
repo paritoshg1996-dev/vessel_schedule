@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T22:54:00.453960Z",
+  "generated_at": "2026-09-17T01:20:47.381001Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 24,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:36.518453",
+      "started_at": "2026-09-17T01:20:21.383469",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 40,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:44.377326",
+      "started_at": "2026-09-17T01:20:29.119574",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 15,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:58.996377",
+      "started_at": "2026-09-17T01:20:45.930836",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 9,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:58.229482",
+      "started_at": "2026-09-17T01:20:45.198920",
       "error_type": null,
       "error_message": null
     },
@@ -47,7 +47,7 @@
       "status": "success",
       "rows_found": 14,
       "report_date": "2026-09-17",
-      "started_at": "2026-09-16T22:53:56.637857",
+      "started_at": "2026-09-17T01:20:43.365145",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 7,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:34.921808",
+      "started_at": "2026-09-17T01:20:19.651981",
       "error_type": null,
       "error_message": null
     },
@@ -66,8 +66,8 @@
       "scope": "terminal",
       "status": "success",
       "rows_found": 44,
-      "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:54.291549",
+      "report_date": "2026-09-17",
+      "started_at": "2026-09-17T01:20:39.727021",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 113,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:50.323474",
+      "started_at": "2026-09-17T01:20:36.244372",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 28,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:47.665060",
+      "started_at": "2026-09-17T01:20:32.470775",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 33,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:39.096967",
+      "started_at": "2026-09-17T01:20:24.076982",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 17,
       "report_date": "2026-09-16",
-      "started_at": "2026-09-16T22:53:41.805403",
+      "started_at": "2026-09-17T01:20:26.576865",
       "error_type": null,
       "error_message": null
     }
@@ -661,27 +661,6 @@
     },
     {
       "port_code": "MUNDRA",
-      "terminal_code": "MICT",
-      "terminal_name": "Mundra International Container Terminal",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "MAERSK SAN CHRISTOBAL",
-      "via_no": "MABA638W",
-      "service": "MECL",
-      "shipping_line": "MSK",
-      "agent": "MSK",
-      "loa_m": 299.92,
-      "cargo_commodity": null,
-      "eta": "2026-09-17T06:00:00",
-      "gate_cutoff": "2026-09-17T00:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-16",
-      "is_sample": false
-    },
-    {
-      "port_code": "MUNDRA",
       "terminal_code": "T2",
       "terminal_name": "Adani Mundra Terminal 2",
       "berth_no": null,
@@ -719,7 +698,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1076,7 +1055,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1097,7 +1076,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1286,7 +1265,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1454,7 +1433,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1580,7 +1559,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1643,7 +1622,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -1727,7 +1706,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -2105,7 +2084,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -2210,7 +2189,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -2399,7 +2378,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -2882,7 +2861,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -3050,7 +3029,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -3386,7 +3365,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -3491,7 +3470,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -3554,7 +3533,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -3911,7 +3890,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -4100,7 +4079,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -4520,7 +4499,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -4541,7 +4520,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -4772,7 +4751,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5045,7 +5024,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5234,7 +5213,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5318,7 +5297,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5339,7 +5318,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5549,7 +5528,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5696,7 +5675,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5738,7 +5717,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5759,7 +5738,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5906,7 +5885,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -5969,7 +5948,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6116,7 +6095,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6158,7 +6137,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6251,6 +6230,27 @@
       "terminal_name": "Mundra International Container Terminal",
       "berth_no": null,
       "status": "expected",
+      "vessel_name": "SSL BRAHMAPUTRA",
+      "via_no": "SSLB940",
+      "service": "RGI",
+      "shipping_line": "UNF",
+      "agent": "UNF",
+      "loa_m": 260.05,
+      "cargo_commodity": null,
+      "eta": "2026-10-01T12:00:00",
+      "gate_cutoff": "2026-10-01T06:00:00",
+      "berthed_on": null,
+      "expected_completion": null,
+      "sailed_on": null,
+      "report_date": "2026-09-17",
+      "is_sample": false
+    },
+    {
+      "port_code": "MUNDRA",
+      "terminal_code": "MICT",
+      "terminal_name": "Mundra International Container Terminal",
+      "berth_no": null,
+      "status": "expected",
       "vessel_name": "PEARLTON THRIVE",
       "via_no": "PLTT02637",
       "service": "EVGI",
@@ -6263,7 +6263,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6284,7 +6284,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6326,7 +6326,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6368,7 +6368,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6557,7 +6557,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6599,7 +6599,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6620,7 +6620,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -6641,7 +6641,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-16",
+      "report_date": "2026-09-17",
       "is_sample": false
     },
     {
@@ -7000,10 +7000,10 @@
       "terminal_code": "MICT",
       "terminal_name": "Mundra International Container Terminal",
       "berth_no": null,
-      "vessel_name": "INTERASIA ACCELERATE",
-      "via_no": "INCC017E",
-      "service": "CI6",
-      "shipping_line": "INT",
+      "vessel_name": "MAERSK SAN CHRISTOBAL",
+      "via_no": "MABA638W",
+      "service": "MECL",
+      "shipping_line": "MSK",
       "loa_m": null,
       "draft_m": null,
       "side": null,
@@ -7013,7 +7013,7 @@
       "next_event_at": null,
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-16"
+      "report_date": "2026-09-17"
     },
     {
       "port_code": "MUNDRA",
@@ -7033,7 +7033,7 @@
       "next_event_at": null,
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-16"
+      "report_date": "2026-09-17"
     },
     {
       "port_code": "JNPT",
