@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T14:27:32.583094Z",
+  "generated_at": "2026-09-18T18:23:28.461815Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 25,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:09.782027",
+      "started_at": "2026-09-18T18:23:03.825671",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 42,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:17.459482",
+      "started_at": "2026-09-18T18:23:11.704812",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 18,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:31.115579",
+      "started_at": "2026-09-18T18:23:26.170559",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 12,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:30.462044",
+      "started_at": "2026-09-18T18:23:25.538638",
       "error_type": null,
       "error_message": null
     },
@@ -47,7 +47,7 @@
       "status": "success",
       "rows_found": 16,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:28.680845",
+      "started_at": "2026-09-18T18:23:23.986336",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 7,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:08.228123",
+      "started_at": "2026-09-18T18:23:02.569324",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 44,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:26.938624",
+      "started_at": "2026-09-18T18:23:22.051597",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 114,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:22.894733",
+      "started_at": "2026-09-18T18:23:18.172989",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 28,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:20.172662",
+      "started_at": "2026-09-18T18:23:14.542572",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 34,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:12.079394",
+      "started_at": "2026-09-18T18:23:06.131897",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 16,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T14:27:14.667527",
+      "started_at": "2026-09-18T18:23:09.226881",
       "error_type": null,
       "error_message": null
     }
@@ -359,27 +359,6 @@
       "cargo_commodity": null,
       "eta": "2026-09-18T14:00:00",
       "gate_cutoff": "2026-09-18T16:00:00",
-      "berthed_on": null,
-      "expected_completion": null,
-      "sailed_on": null,
-      "report_date": "2026-09-18",
-      "is_sample": false
-    },
-    {
-      "port_code": "COCHIN",
-      "terminal_code": "IGTPL",
-      "terminal_name": "India Gateway Terminal Pvt Ltd (Vallarpadam)",
-      "berth_no": null,
-      "status": "expected",
-      "vessel_name": "WAN HAI 309",
-      "via_no": "042E",
-      "service": null,
-      "shipping_line": "WHL",
-      "agent": "WHL",
-      "loa_m": null,
-      "cargo_commodity": null,
-      "eta": "2026-09-18T15:00:00",
-      "gate_cutoff": "2026-09-16T19:35:00",
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
@@ -7183,6 +7162,26 @@
       "ops_commenced_at": null,
       "ops_completed_at": null,
       "next_event_at": "2026-09-19T23:00:00",
+      "import_moves": null,
+      "export_moves": null,
+      "report_date": "2026-09-18"
+    },
+    {
+      "port_code": "COCHIN",
+      "terminal_code": "IGTPL",
+      "terminal_name": "India Gateway Terminal Pvt Ltd (Vallarpadam)",
+      "berth_no": null,
+      "vessel_name": "WAN HAI 309",
+      "via_no": "042E",
+      "service": null,
+      "shipping_line": "WHL",
+      "loa_m": null,
+      "draft_m": null,
+      "side": null,
+      "alongside_at": "2026-09-18T14:55:00",
+      "ops_commenced_at": null,
+      "ops_completed_at": null,
+      "next_event_at": "2026-09-19T13:00:00",
       "import_moves": null,
       "export_moves": null,
       "report_date": "2026-09-18"
