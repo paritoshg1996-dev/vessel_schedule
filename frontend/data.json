@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T21:38:03.343082Z",
+  "generated_at": "2026-09-19T00:15:33.893828Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 25,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:41.466465",
+      "started_at": "2026-09-19T00:15:09.656072",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 42,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:48.748590",
+      "started_at": "2026-09-19T00:15:18.471292",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 18,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:38:01.892885",
+      "started_at": "2026-09-19T00:15:32.168351",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 12,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:38:01.217553",
+      "started_at": "2026-09-19T00:15:31.429654",
       "error_type": null,
       "error_message": null
     },
@@ -45,9 +45,9 @@
       "terminal_code": "IGTPL",
       "scope": "terminal",
       "status": "success",
-      "rows_found": 16,
+      "rows_found": 15,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-18T21:37:59.803590",
+      "started_at": "2026-09-19T00:15:29.722802",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 7,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:40.060899",
+      "started_at": "2026-09-19T00:15:08.347727",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 44,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:58.037170",
+      "started_at": "2026-09-19T00:15:27.473900",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 114,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:54.165823",
+      "started_at": "2026-09-19T00:15:23.619082",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 28,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:51.792975",
+      "started_at": "2026-09-19T00:15:20.845230",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 34,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:43.513512",
+      "started_at": "2026-09-19T00:15:13.010111",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 16,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-18T21:37:46.533532",
+      "started_at": "2026-09-19T00:15:15.922874",
       "error_type": null,
       "error_message": null
     }
@@ -7182,26 +7182,6 @@
       "ops_commenced_at": null,
       "ops_completed_at": null,
       "next_event_at": "2026-09-19T13:00:00",
-      "import_moves": null,
-      "export_moves": null,
-      "report_date": "2026-09-19"
-    },
-    {
-      "port_code": "COCHIN",
-      "terminal_code": "IGTPL",
-      "terminal_name": "India Gateway Terminal Pvt Ltd (Vallarpadam)",
-      "berth_no": null,
-      "vessel_name": "SSL BHARAT",
-      "via_no": "203C",
-      "service": null,
-      "shipping_line": "UNF",
-      "loa_m": null,
-      "draft_m": null,
-      "side": null,
-      "alongside_at": "2026-09-17T11:15:00",
-      "ops_commenced_at": null,
-      "ops_completed_at": null,
-      "next_event_at": "2026-09-18T21:00:00",
       "import_moves": null,
       "export_moves": null,
       "report_date": "2026-09-19"
