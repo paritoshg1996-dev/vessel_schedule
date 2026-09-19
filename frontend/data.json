@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T17:58:33.022976Z",
+  "generated_at": "2026-09-19T20:34:50.236414Z",
   "run_status": [
     {
       "terminal_code": "APMT",
@@ -7,7 +7,7 @@
       "status": "success",
       "rows_found": 26,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:11.768071",
+      "started_at": "2026-09-19T20:34:24.628486",
       "error_type": null,
       "error_message": null
     },
@@ -17,7 +17,7 @@
       "status": "success",
       "rows_found": 44,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:18.690867",
+      "started_at": "2026-09-19T20:34:33.544033",
       "error_type": null,
       "error_message": null
     },
@@ -27,7 +27,7 @@
       "status": "success",
       "rows_found": 18,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:31.151267",
+      "started_at": "2026-09-19T20:34:47.475500",
       "error_type": null,
       "error_message": null
     },
@@ -37,7 +37,7 @@
       "status": "success",
       "rows_found": 12,
       "report_date": "2026-09-18",
-      "started_at": "2026-09-19T17:58:30.503343",
+      "started_at": "2026-09-19T20:34:46.679444",
       "error_type": null,
       "error_message": null
     },
@@ -45,9 +45,9 @@
       "terminal_code": "IGTPL",
       "scope": "terminal",
       "status": "success",
-      "rows_found": 14,
-      "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:28.949880",
+      "rows_found": 13,
+      "report_date": "2026-09-20",
+      "started_at": "2026-09-19T20:34:45.167045",
       "error_type": null,
       "error_message": null
     },
@@ -57,7 +57,7 @@
       "status": "success",
       "rows_found": 6,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:10.551502",
+      "started_at": "2026-09-19T20:34:23.025345",
       "error_type": null,
       "error_message": null
     },
@@ -67,7 +67,7 @@
       "status": "success",
       "rows_found": 40,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:26.805221",
+      "started_at": "2026-09-19T20:34:42.622647",
       "error_type": null,
       "error_message": null
     },
@@ -77,7 +77,7 @@
       "status": "success",
       "rows_found": 113,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:23.154885",
+      "started_at": "2026-09-19T20:34:38.434981",
       "error_type": null,
       "error_message": null
     },
@@ -87,7 +87,7 @@
       "status": "success",
       "rows_found": 28,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:21.085087",
+      "started_at": "2026-09-19T20:34:36.120495",
       "error_type": null,
       "error_message": null
     },
@@ -97,7 +97,7 @@
       "status": "success",
       "rows_found": 33,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:14.248314",
+      "started_at": "2026-09-19T20:34:28.097657",
       "error_type": null,
       "error_message": null
     },
@@ -107,7 +107,7 @@
       "status": "success",
       "rows_found": 16,
       "report_date": "2026-09-19",
-      "started_at": "2026-09-19T17:58:16.550579",
+      "started_at": "2026-09-19T20:34:30.856318",
       "error_type": null,
       "error_message": null
     }
@@ -446,7 +446,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -761,7 +761,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -845,7 +845,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -1454,7 +1454,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -2126,7 +2126,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -2210,7 +2210,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -2273,7 +2273,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -2840,7 +2840,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -3428,7 +3428,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -3659,7 +3659,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -3764,7 +3764,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -4184,7 +4184,7 @@
       "berthed_on": null,
       "expected_completion": null,
       "sailed_on": null,
-      "report_date": "2026-09-19",
+      "report_date": "2026-09-20",
       "is_sample": false
     },
     {
@@ -7097,27 +7097,7 @@
       "next_event_at": "2026-09-20T14:30:00",
       "import_moves": null,
       "export_moves": null,
-      "report_date": "2026-09-19"
-    },
-    {
-      "port_code": "COCHIN",
-      "terminal_code": "IGTPL",
-      "terminal_name": "India Gateway Terminal Pvt Ltd (Vallarpadam)",
-      "berth_no": null,
-      "vessel_name": "MSC KETA II",
-      "via_no": "SR636R",
-      "service": null,
-      "shipping_line": "MSC",
-      "loa_m": null,
-      "draft_m": null,
-      "side": null,
-      "alongside_at": "2026-09-19T04:15:00",
-      "ops_commenced_at": null,
-      "ops_completed_at": null,
-      "next_event_at": "2026-09-19T21:00:00",
-      "import_moves": null,
-      "export_moves": null,
-      "report_date": "2026-09-19"
+      "report_date": "2026-09-20"
     },
     {
       "port_code": "MUNDRA",
